@@ -1,0 +1,380 @@
+[
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "berakhot",
+    "tractateHe": "משנה ברכות",
+    "chapterCount": 9
+  },
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "peah",
+    "tractateHe": "משנה פאה",
+    "chapterCount": 8
+  },
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "demai",
+    "tractateHe": "משנה דמאי",
+    "chapterCount": 7
+  },
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "kilayim",
+    "tractateHe": "משנה כלאים",
+    "chapterCount": 9
+  },
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "sheviit",
+    "tractateHe": "משנה שביעית",
+    "chapterCount": 10
+  },
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "terumot",
+    "tractateHe": "משנה תרומות",
+    "chapterCount": 11
+  },
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "maasrot",
+    "tractateHe": "משנה מעשרות",
+    "chapterCount": 5
+  },
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "maaser-sheni",
+    "tractateHe": "משנה מעשר שני",
+    "chapterCount": 5
+  },
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "challah",
+    "tractateHe": "משנה חלה",
+    "chapterCount": 4
+  },
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "orlah",
+    "tractateHe": "משנה ערלה",
+    "chapterCount": 3
+  },
+  {
+    "seder": "Seder Zeraim",
+    "tractateSlug": "bikkurim",
+    "tractateHe": "משנה ביכורים",
+    "chapterCount": 3
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "shabbat",
+    "tractateHe": "משנה שבת",
+    "chapterCount": 24
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "eruvin",
+    "tractateHe": "משנה עירובין",
+    "chapterCount": 10
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "pesachim",
+    "tractateHe": "משנה פסחים",
+    "chapterCount": 10
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "shekalim",
+    "tractateHe": "משנה שקלים",
+    "chapterCount": 8
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "yoma",
+    "tractateHe": "משנה יומא",
+    "chapterCount": 8
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "sukkah",
+    "tractateHe": "משנה סוכה",
+    "chapterCount": 5
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "beitzah",
+    "tractateHe": "משנה ביצה",
+    "chapterCount": 5
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "rosh-hashanah",
+    "tractateHe": "משנה ראש השנה",
+    "chapterCount": 4
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "taanit",
+    "tractateHe": "משנה תענית",
+    "chapterCount": 4
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "megillah",
+    "tractateHe": "משנה מגילה",
+    "chapterCount": 4
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "moed-katan",
+    "tractateHe": "משנה מועד קטן",
+    "chapterCount": 3
+  },
+  {
+    "seder": "Seder Moed",
+    "tractateSlug": "chagigah",
+    "tractateHe": "משנה חגיגה",
+    "chapterCount": 3
+  },
+  {
+    "seder": "Seder Nashim",
+    "tractateSlug": "yevamot",
+    "tractateHe": "משנה יבמות",
+    "chapterCount": 16
+  },
+  {
+    "seder": "Seder Nashim",
+    "tractateSlug": "ketubot",
+    "tractateHe": "משנה כתובות",
+    "chapterCount": 13
+  },
+  {
+    "seder": "Seder Nashim",
+    "tractateSlug": "nedarim",
+    "tractateHe": "משנה נדרים",
+    "chapterCount": 11
+  },
+  {
+    "seder": "Seder Nashim",
+    "tractateSlug": "nazir",
+    "tractateHe": "משנה נזיר",
+    "chapterCount": 9
+  },
+  {
+    "seder": "Seder Nashim",
+    "tractateSlug": "gittin",
+    "tractateHe": "משנה גיטין",
+    "chapterCount": 9
+  },
+  {
+    "seder": "Seder Nashim",
+    "tractateSlug": "sotah",
+    "tractateHe": "משנה סוטה",
+    "chapterCount": 9
+  },
+  {
+    "seder": "Seder Nashim",
+    "tractateSlug": "kiddushin",
+    "tractateHe": "משנה קידושין",
+    "chapterCount": 4
+  },
+  {
+    "seder": "Seder Nezikin",
+    "tractateSlug": "bava-kamma",
+    "tractateHe": "משנה בבא קמא",
+    "chapterCount": 10
+  },
+  {
+    "seder": "Seder Nezikin",
+    "tractateSlug": "bava-metzia",
+    "tractateHe": "משנה בבא מציעא",
+    "chapterCount": 10
+  },
+  {
+    "seder": "Seder Nezikin",
+    "tractateSlug": "bava-batra",
+    "tractateHe": "משנה בבא בתרא",
+    "chapterCount": 10
+  },
+  {
+    "seder": "Seder Nezikin",
+    "tractateSlug": "sanhedrin",
+    "tractateHe": "משנה סנהדרין",
+    "chapterCount": 11
+  },
+  {
+    "seder": "Seder Nezikin",
+    "tractateSlug": "makkot",
+    "tractateHe": "משנה מכות",
+    "chapterCount": 3
+  },
+  {
+    "seder": "Seder Nezikin",
+    "tractateSlug": "shevuot",
+    "tractateHe": "משנה שבועות",
+    "chapterCount": 8
+  },
+  {
+    "seder": "Seder Nezikin",
+    "tractateSlug": "eduyot",
+    "tractateHe": "משנה עדיות",
+    "chapterCount": 8
+  },
+  {
+    "seder": "Seder Nezikin",
+    "tractateSlug": "avodah-zarah",
+    "tractateHe": "משנה עבודה זרה",
+    "chapterCount": 5
+  },
+  {
+    "seder": "Seder Nezikin",
+    "tractateSlug": "pirkei-avot",
+    "tractateHe": "משנה אבות",
+    "chapterCount": 6
+  },
+  {
+    "seder": "Seder Nezikin",
+    "tractateSlug": "horayot",
+    "tractateHe": "משנה הוריות",
+    "chapterCount": 3
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "zevachim",
+    "tractateHe": "משנה זבחים",
+    "chapterCount": 14
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "menachot",
+    "tractateHe": "משנה מנחות",
+    "chapterCount": 13
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "chullin",
+    "tractateHe": "משנה חולין",
+    "chapterCount": 12
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "bekhorot",
+    "tractateHe": "משנה בכורות",
+    "chapterCount": 9
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "arakhin",
+    "tractateHe": "משנה ערכין",
+    "chapterCount": 9
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "temurah",
+    "tractateHe": "משנה תמורה",
+    "chapterCount": 7
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "keritot",
+    "tractateHe": "משנה כריתות",
+    "chapterCount": 6
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "meilah",
+    "tractateHe": "משנה מעילה",
+    "chapterCount": 6
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "tamid",
+    "tractateHe": "משנה תמיד",
+    "chapterCount": 7
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "middot",
+    "tractateHe": "משנה מדות",
+    "chapterCount": 5
+  },
+  {
+    "seder": "Seder Kodashim",
+    "tractateSlug": "kinnim",
+    "tractateHe": "משנה קינים",
+    "chapterCount": 3
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "kelim",
+    "tractateHe": "משנה כלים",
+    "chapterCount": 30
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "oholot",
+    "tractateHe": "משנה אהלות",
+    "chapterCount": 18
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "negaim",
+    "tractateHe": "משנה נגעים",
+    "chapterCount": 14
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "parah",
+    "tractateHe": "משנה פרה",
+    "chapterCount": 12
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "tahorot",
+    "tractateHe": "משנה טהרות",
+    "chapterCount": 10
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "mikvaot",
+    "tractateHe": "משנה מקואות",
+    "chapterCount": 10
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "niddah",
+    "tractateHe": "משנה נדה",
+    "chapterCount": 10
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "makhshirin",
+    "tractateHe": "משנה מכשירין",
+    "chapterCount": 6
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "zavim",
+    "tractateHe": "משנה זבים",
+    "chapterCount": 5
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "tevul-yom",
+    "tractateHe": "משנה טבול יום",
+    "chapterCount": 4
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "yadayim",
+    "tractateHe": "משנה ידים",
+    "chapterCount": 4
+  },
+  {
+    "seder": "Seder Tahorot",
+    "tractateSlug": "oktzin",
+    "tractateHe": "משנה עוקצים",
+    "chapterCount": 3
+  }
+]

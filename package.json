@@ -9,7 +9,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "ingest:discover": "node scripts/ingest/discover.mjs",
+    "ingest": "node scripts/ingest/fetch-raw.mjs && node scripts/ingest/build-tehillim.mjs && node scripts/ingest/build-mishnah.mjs",
+    "test": "node --test"
   },
   "dependencies": {
     "@fontsource/frank-ruhl-libre": "^5.3.0",

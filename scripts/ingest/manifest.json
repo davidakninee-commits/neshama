@@ -1,0 +1,388 @@
+{
+  "tehillim": {
+    "object": "json/Tanakh/Writings/Psalms/Hebrew/Tanach with Nikkud.json",
+    "size": 357266,
+    "license": "Public Domain",
+    "versionTitle": "Tanach with Nikkud"
+  },
+  "mishnah": [
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Berakhot",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Berakhot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 21812
+    },
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Bikkurim",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Bikkurim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 12617
+    },
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Challah",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Challah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 13651
+    },
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Demai",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Demai/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 19033
+    },
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Kilayim",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Kilayim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 29342
+    },
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Maaser Sheni",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Maaser Sheni/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 23189
+    },
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Maasrot",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Maasrot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 16324
+    },
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Orlah",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Orlah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 11099
+    },
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Peah",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Peah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 24840
+    },
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Sheviit",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Sheviit/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 33470
+    },
+    {
+      "seder": "Seder Zeraim",
+      "tractate": "Mishnah Terumot",
+      "object": "json/Mishnah/Seder Zeraim/Mishnah Terumot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 36284
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Beitzah",
+      "object": "json/Mishnah/Seder Moed/Mishnah Beitzah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 15643
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Chagigah",
+      "object": "json/Mishnah/Seder Moed/Mishnah Chagigah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 9754
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Eruvin",
+      "object": "json/Mishnah/Seder Moed/Mishnah Eruvin/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 38374
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Megillah",
+      "object": "json/Mishnah/Seder Moed/Mishnah Megillah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 14267
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Moed Katan",
+      "object": "json/Mishnah/Seder Moed/Mishnah Moed Katan/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 9032
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Pesachim",
+      "object": "json/Mishnah/Seder Moed/Mishnah Pesachim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 37929
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Rosh Hashanah",
+      "object": "json/Mishnah/Seder Moed/Mishnah Rosh Hashanah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 16330
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Shabbat",
+      "object": "json/Mishnah/Seder Moed/Mishnah Shabbat/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 54527
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Shekalim",
+      "object": "json/Mishnah/Seder Moed/Mishnah Shekalim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 25393
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Sukkah",
+      "object": "json/Mishnah/Seder Moed/Mishnah Sukkah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 22569
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Ta'anit",
+      "object": "json/Mishnah/Seder Moed/Mishnah Ta'anit/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 18592
+    },
+    {
+      "seder": "Seder Moed",
+      "tractate": "Mishnah Yoma",
+      "object": "json/Mishnah/Seder Moed/Mishnah Yoma/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 29224
+    },
+    {
+      "seder": "Seder Nashim",
+      "tractate": "Mishnah Gittin",
+      "object": "json/Mishnah/Seder Nashim/Mishnah Gittin/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 36183
+    },
+    {
+      "seder": "Seder Nashim",
+      "tractate": "Mishnah Ketubot",
+      "object": "json/Mishnah/Seder Nashim/Mishnah Ketubot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 50669
+    },
+    {
+      "seder": "Seder Nashim",
+      "tractate": "Mishnah Kiddushin",
+      "object": "json/Mishnah/Seder Nashim/Mishnah Kiddushin/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 22506
+    },
+    {
+      "seder": "Seder Nashim",
+      "tractate": "Mishnah Nazir",
+      "object": "json/Mishnah/Seder Nashim/Mishnah Nazir/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 30624
+    },
+    {
+      "seder": "Seder Nashim",
+      "tractate": "Mishnah Nedarim",
+      "object": "json/Mishnah/Seder Nashim/Mishnah Nedarim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 43005
+    },
+    {
+      "seder": "Seder Nashim",
+      "tractate": "Mishnah Sotah",
+      "object": "json/Mishnah/Seder Nashim/Mishnah Sotah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 39037
+    },
+    {
+      "seder": "Seder Nashim",
+      "tractate": "Mishnah Yevamot",
+      "object": "json/Mishnah/Seder Nashim/Mishnah Yevamot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 63812
+    },
+    {
+      "seder": "Seder Nezikin",
+      "tractate": "Mishnah Avodah Zarah",
+      "object": "json/Mishnah/Seder Nezikin/Mishnah Avodah Zarah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 23893
+    },
+    {
+      "seder": "Seder Nezikin",
+      "tractate": "Mishnah Bava Batra",
+      "object": "json/Mishnah/Seder Nezikin/Mishnah Bava Batra/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 45369
+    },
+    {
+      "seder": "Seder Nezikin",
+      "tractate": "Mishnah Bava Kamma",
+      "object": "json/Mishnah/Seder Nezikin/Mishnah Bava Kamma/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 40789
+    },
+    {
+      "seder": "Seder Nezikin",
+      "tractate": "Mishnah Bava Metzia",
+      "object": "json/Mishnah/Seder Nezikin/Mishnah Bava Metzia/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 46489
+    },
+    {
+      "seder": "Seder Nezikin",
+      "tractate": "Mishnah Eduyot",
+      "object": "json/Mishnah/Seder Nezikin/Mishnah Eduyot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 38360
+    },
+    {
+      "seder": "Seder Nezikin",
+      "tractate": "Mishnah Horayot",
+      "object": "json/Mishnah/Seder Nezikin/Mishnah Horayot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 10466
+    },
+    {
+      "seder": "Seder Nezikin",
+      "tractate": "Mishnah Makkot",
+      "object": "json/Mishnah/Seder Nezikin/Mishnah Makkot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 21003
+    },
+    {
+      "seder": "Seder Nezikin",
+      "tractate": "Mishnah Sanhedrin",
+      "object": "json/Mishnah/Seder Nezikin/Mishnah Sanhedrin/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 51480
+    },
+    {
+      "seder": "Seder Nezikin",
+      "tractate": "Mishnah Shevuot",
+      "object": "json/Mishnah/Seder Nezikin/Mishnah Shevuot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 33180
+    },
+    {
+      "seder": "Seder Nezikin",
+      "tractate": "Pirkei Avot",
+      "object": "json/Mishnah/Seder Nezikin/Pirkei Avot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 45209
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Arakhin",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Arakhin/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 26085
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Bekhorot",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Bekhorot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 36919
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Chullin",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Chullin/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 37732
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Keritot",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Keritot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 26472
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Kinnim",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Kinnim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 9781
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Meilah",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Meilah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 18505
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Menachot",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Menachot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 52720
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Middot",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Middot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 23503
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Tamid",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Tamid/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 22003
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Temurah",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Temurah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 19411
+    },
+    {
+      "seder": "Seder Kodashim",
+      "tractate": "Mishnah Zevachim",
+      "object": "json/Mishnah/Seder Kodashim/Mishnah Zevachim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 50813
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Kelim",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Kelim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 101923
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Makhshirin",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Makhshirin/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 21909
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Mikvaot",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Mikvaot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 31777
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Negaim",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Negaim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 54019
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Niddah",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Niddah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 31012
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Oholot",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Oholot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 60586
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Oktzin",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Oktzin/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 11586
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Parah",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Parah/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 38473
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Tahorot",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Tahorot/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 38281
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Tevul Yom",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Tevul Yom/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 11683
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Yadayim",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Yadayim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 16349
+    },
+    {
+      "seder": "Seder Tahorot",
+      "tractate": "Mishnah Zavim",
+      "object": "json/Mishnah/Seder Tahorot/Mishnah Zavim/Hebrew/Mishnah, ed. Romm, Vilna 1913.json",
+      "size": 16069
+    }
+  ]
+}
