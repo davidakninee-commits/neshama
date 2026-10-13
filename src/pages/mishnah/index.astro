@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadMishnahIndex } from '../../lib/content/loadMishnah.ts';
+
+const SEDER_HE: Record<string, string> = {
+  'Seder Zeraim': 'סדר זרעים',
+  'Seder Moed': 'סדר מועד',
+  'Seder Nashim': 'סדר נשים',
+  'Seder Nezikin': 'סדר נזיקין',
+  'Seder Kodashim': 'סדר קדשים',
+  'Seder Tahorot': 'סדר טהרות',
+};
+
+const index = loadMishnahIndex();
+const seders = [...new Set(index.map((t) => t.seder))];
+---
+
+<BaseLayout title="משנה">
+  <h1>ששה סדרי משנה</h1>
+  <p><a href="/">&larr; חזרה לדף הבית</a> · <a href="/mishnah/by-name">משניות לפי אותיות השם</a></p>
+
+  {
+    seders.map((seder) => (
+      <section>
+        <h2>{SEDER_HE[seder] ?? seder}</h2>
+        <ul class="tractate-list">
+          {index
+            .filter((t) => t.seder === seder)
+            .map((t) => (
+              <li>
+                <a href={`/mishnah/${t.tractateSlug}`}>{t.tractateHe}</a>
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  .tractate-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .tractate-list a {
+    display: block;
+    padding: 0.5rem;
+    border: 1px solid var(--border-light);
+    border-radius: 0.375rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-family: var(--font-prayer);
+  }
+
+  .tractate-list a:hover {
+    border-color: var(--gold-accent);
+    color: var(--gold-hover);
+  }
+</style>

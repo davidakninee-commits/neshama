@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isPlaceholder } from '../../lib/mishnahByName/defaultMapping.ts';
+---
+
+<BaseLayout title="משניות לפי אותיות השם">
+  <h1>משניות לפי אותיות השם</h1>
+  <p><a href="/mishnah">&larr; חזרה לרשימת הסדרים</a></p>
+
+  {
+    isPlaceholder && (
+      <p class="disclaimer" role="note">
+        ⚠️ מיפוי האותיות למשניות שלהלן הוא <strong>טיוטה ראשונית בלבד</strong> וטרם
+        אושר הלכתית — כל משנה המוצגת היא משנה אמיתית וקיימת, אך ההתאמה בין האות
+        לבין המשנה הספציפית עדיין דורשת בדיקה.
+      </p>
+    )
+  }
+
+  <form id="name-form">
+    <label for="name-input">שם הנפטר</label>
+    <input
+      id="name-input"
+      name="name"
+      type="text"
+      dir="rtl"
+      lang="he"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      placeholder="לדוגמה: דוד"
+      required
+    />
+    <button type="submit">הצג משניות</button>
+  </form>
+
+  <div id="results" aria-live="polite"></div>
+
+  <script>
+    import { mishnahForName } from '../../lib/mishnahByName/mishnahForName.ts';
+    import { renderMishnahResults } from '../../lib/ui/renderMishnahResults.ts';
+
+    const form = document.getElementById('name-form') as HTMLFormElement;
+    const results = document.getElementById('results') as HTMLElement;
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = new FormData(form).get('name')?.toString() ?? '';
+      const matches = mishnahForName(name);
+      renderMishnahResults(results, matches);
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .disclaimer {
+    background: #fdf6e3;
+    border: 1px solid var(--gold-accent);
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: end;
+    margin: 1.5rem 0;
+  }
+
+  label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  input {
+    font-size: 1.1rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-light);
+    border-radius: 0.375rem;
+    min-width: 12rem;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+  }
+
+  button {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--primary-accent);
+    border-radius: 0.375rem;
+    background: var(--primary-accent);
+    color: white;
+  }
+
+  button:hover {
+    background: var(--gold-hover);
+    border-color: var(--gold-hover);
+  }
+
+  .stanza {
+    margin-bottom: 1.5rem;
+  }
+
+  .stanza h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .mishnah-text {
+    padding-inline-start: 0;
+  }
+
+  .empty-state {
+    color: var(--text-muted);
+  }
+</style>

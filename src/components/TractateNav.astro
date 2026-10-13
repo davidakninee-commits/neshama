@@ -1,0 +1,40 @@
+---
+interface Props {
+  tractateSlug: string;
+  tractateHe: string;
+  current: number;
+  total: number;
+}
+
+const { tractateSlug, tractateHe, current, total } = Astro.props;
+const basePath = `/mishnah/${tractateSlug}`;
+const prev = current > 1 ? current - 1 : null;
+const next = current < total ? current + 1 : null;
+---
+
+<p class="breadcrumb">
+  <a href="/mishnah">ששה סדרי משנה</a> &larr; <a href={basePath}>{tractateHe}</a>
+</p>
+
+<nav class="chapter-nav">
+  {prev ? <a href={`${basePath}/${prev}`}>&rarr; פרק {prev}</a> : <span />}
+  <a href={basePath}>רשימת פרקים</a>
+  {next ? <a href={`${basePath}/${next}`}>פרק {next} &larr;</a> : <span />}
+</nav>
+
+<style>
+  .breadcrumb {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .chapter-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 2rem 0 1rem;
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+  }
+</style>

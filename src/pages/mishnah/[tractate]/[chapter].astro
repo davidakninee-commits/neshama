@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TractateNav from '../../../components/TractateNav.astro';
+import { loadMishnahIndex, loadMishnahTractate } from '../../../lib/content/loadMishnah.ts';
+
+export function getStaticPaths() {
+  return loadMishnahIndex().flatMap((t) =>
+    Array.from({ length: t.chapterCount }, (_, i) => ({
+      params: { tractate: t.tractateSlug, chapter: String(i + 1) },
+      props: { tractateHe: t.tractateHe, chapterCount: t.chapterCount },
+    }))
+  );
+}
+
+const { tractate } = Astro.params;
+const chapterNum = Number(Astro.params.chapter);
+const { tractateHe, chapterCount } = Astro.props;
+const { chapters } = loadMishnahTractate(tractate!);
+const mishnayot = chapters[chapterNum - 1];
+---
+
+<BaseLayout title={`${tractateHe} פרק ${chapterNum}`}>
+  <h1>{tractateHe} פרק {chapterNum}</h1>
+
+  <ol class="mishnah-list prayer-text">
+    {mishnayot.map((m) => <li>{m}</li>)}
+  </ol>
+
+  <TractateNav tractateSlug={tractate!} tractateHe={tractateHe} current={chapterNum} total={chapterCount} />
+</BaseLayout>
+
+<style>
+  .mishnah-list {
+    padding-inline-start: 1.5rem;
+  }
+
+  .mishnah-list li {
+    margin-bottom: 0.75rem;
+  }
+</style>

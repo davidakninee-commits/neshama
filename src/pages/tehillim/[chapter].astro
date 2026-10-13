@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ChapterNav from '../../components/ChapterNav.astro';
+import { loadTehillimIndex, loadTehillimChapter } from '../../lib/content/loadTehillim.ts';
+
+export function getStaticPaths() {
+  return loadTehillimIndex().map((c) => ({ params: { chapter: String(c.chapter) } }));
+}
+
+const chapterNum = Number(Astro.params.chapter);
+const { verses } = loadTehillimChapter(chapterNum);
+const total = loadTehillimIndex().length;
+---
+
+<BaseLayout title={`תהילים פרק ${chapterNum}`}>
+  <h1>תהילים פרק {chapterNum}</h1>
+
+  <ol class="verse-list prayer-text">
+    {verses.map((v) => <li>{v}</li>)}
+  </ol>
+
+  <ChapterNav basePath="/tehillim" current={chapterNum} total={total} />
+</BaseLayout>
+
+<style>
+  .verse-list {
+    padding-inline-start: 1.5rem;
+  }
+
+  .verse-list li {
+    margin-bottom: 0.4rem;
+  }
+</style>
