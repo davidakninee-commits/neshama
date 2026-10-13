@@ -1,0 +1,173 @@
+---
+import PrintableLayout from '../layouts/PrintableLayout.astro';
+import { isPlaceholder } from '../lib/hazkara/templates.ts';
+---
+
+<PrintableLayout title="הזכרה והשכבה">
+  <h1>הזכרה והשכבה</h1>
+  <p><a href="/">&larr; חזרה לדף הבית</a></p>
+
+  {
+    isPlaceholder && (
+      <p class="disclaimer" role="note">
+        ⚠️ הנוסח המוצג כאן הוא <strong>טיוטה ראשונית בלבד</strong> וטרם אושר הלכתית —
+        יש לבדוק מול סידור/ספר השכבות מודפס או רב לפני שימוש בפועל.
+      </p>
+    )
+  }
+
+  <form id="hazkara-form">
+    <fieldset>
+      <legend>נוסח</legend>
+      <label><input type="radio" name="rite" value="ashkenazi" checked /> אשכנזי</label>
+      <label><input type="radio" name="rite" value="sephardi" /> ספרדי</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>מגדר הנפטר/ת</legend>
+      <label><input type="radio" name="gender" value="male" checked /> איש</label>
+      <label><input type="radio" name="gender" value="female" /> אישה</label>
+    </fieldset>
+
+    <div class="field">
+      <label for="deceased-name-input">שם הנפטר/ת</label>
+      <input
+        id="deceased-name-input"
+        type="text"
+        dir="rtl"
+        lang="he"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        placeholder="לדוגמה: דוד"
+      />
+    </div>
+
+    <div class="field">
+      <label for="parent-name-input">שם ההורה (אופציונלי)</label>
+      <input
+        id="parent-name-input"
+        type="text"
+        dir="rtl"
+        lang="he"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        placeholder="לדוגמה: אברהם"
+      />
+    </div>
+  </form>
+
+  <section id="hazkara-result"></section>
+
+  <script>
+    import { renderHazkara } from '../lib/hazkara/interpolate.ts';
+    import { HAZKARA_TEMPLATES } from '../lib/hazkara/templates.ts';
+    import { normalizeName } from '../lib/hebrew/normalizeName.ts';
+    import type { Rite, Gender } from '../lib/hazkara/types.ts';
+
+    const form = document.getElementById('hazkara-form') as HTMLFormElement;
+    const result = document.getElementById('hazkara-result') as HTMLElement;
+
+    function update() {
+      const data = new FormData(form);
+      const rite = (data.get('rite') ?? 'ashkenazi') as Rite;
+      const gender = (data.get('gender') ?? 'male') as Gender;
+      const deceasedName = normalizeName(
+        (document.getElementById('deceased-name-input') as HTMLInputElement).value
+      ).display;
+      const parentNameRaw = (document.getElementById('parent-name-input') as HTMLInputElement).value;
+      const parentName = normalizeName(parentNameRaw).display || undefined;
+
+      result.replaceChildren();
+      if (!deceasedName) {
+        const empty = document.createElement('p');
+        empty.className = 'empty-state';
+        empty.textContent = 'נא להקליד שם.';
+        result.appendChild(empty);
+        return;
+      }
+
+      const template = HAZKARA_TEMPLATES[`${rite}-${gender}`];
+      const heading = document.createElement('h2');
+      heading.textContent = template.title;
+      result.appendChild(heading);
+
+      const text = renderHazkara(template, { deceasedName, parentName });
+      const p = document.createElement('p');
+      p.className = 'prayer-text';
+      p.textContent = text;
+      result.appendChild(p);
+    }
+
+    form.addEventListener('input', update);
+    update();
+  </script>
+</PrintableLayout>
+
+<style>
+  .disclaimer {
+    background: #fdf6e3;
+    border: 1px solid var(--gold-accent);
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  fieldset {
+    border: 1px solid var(--border-light);
+    border-radius: 0.375rem;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  legend {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 0 0.4rem;
+  }
+
+  fieldset label {
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .field input {
+    font-size: 1.1rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-light);
+    border-radius: 0.375rem;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  #hazkara-result h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .empty-state {
+    color: var(--text-muted);
+  }
+</style>
