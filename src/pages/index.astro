@@ -1,16 +1,107 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadTehillimChapter } from '../lib/content/loadTehillim.ts';
+
+const { verses } = loadTehillimChapter(119);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <h1>נשמה</h1>
+  <p>הקלידו את שם הנפטר בעברית, ותופיע תהילים קי"ט לפי אותיות השם.</p>
+
+  <form id="name-form">
+    <label for="name-input">שם הנפטר</label>
+    <input
+      id="name-input"
+      name="name"
+      type="text"
+      dir="rtl"
+      lang="he"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      placeholder="לדוגמה: דוד"
+      required
+    />
+    <button type="submit">הצג תהילים</button>
+  </form>
+
+  <div id="results" aria-live="polite"></div>
+
+  {/* Our own bundled Public Domain Tanakh text, not user input — but the
+      </script> escape is cheap defensive practice for any inline JSON. */}
+  <script
+    type="application/json"
+    id="ps119-data"
+    set:html={JSON.stringify(verses).replace(/<\//g, '<\\/')}
+  />
+
+  <script>
+    import { versesForName } from '../lib/tehillim119/versesForName.ts';
+    import { renderNameResults } from '../lib/ui/renderNameResults.ts';
+
+    const dataEl = document.getElementById('ps119-data');
+    const verses119: string[] = JSON.parse(dataEl?.textContent ?? '[]');
+
+    const form = document.getElementById('name-form') as HTMLFormElement;
+    const results = document.getElementById('results') as HTMLElement;
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = new FormData(form).get('name')?.toString() ?? '';
+      const ranges = versesForName(name);
+      renderNameResults(results, verses119, ranges);
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: end;
+    margin: 1.5rem 0;
+  }
+
+  label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  input {
+    font-size: 1.1rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    min-width: 12rem;
+  }
+
+  button {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 0.375rem;
+    background: var(--color-accent);
+    color: white;
+  }
+
+  .stanza {
+    margin-bottom: 1.5rem;
+  }
+
+  .verse-list {
+    font-family: var(--font-hebrew-text);
+    font-size: 1.15rem;
+    padding-inline-start: 1.5rem;
+  }
+
+  .verse-list li {
+    margin-bottom: 0.4rem;
+  }
+
+  .empty-state {
+    color: #888;
+  }
+</style>

@@ -1,0 +1,46 @@
+:root {
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-accent: #4a3f35;
+  --color-border: #d9d2c7;
+  --font-ui: system-ui, sans-serif; /* swapped for Heebo in Phase 4 */
+  --font-hebrew-text: Georgia, serif; /* swapped for Taamey Frank CLM in Phase 4 */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-hebrew-text);
+}
+
+a {
+  color: var(--color-accent);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
