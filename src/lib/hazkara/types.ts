@@ -1,4 +1,4 @@
-export type Rite = 'sephardi' | 'ashkenazi';
+export type Rite = 'sephardi' | 'ashkenazi' | 'mizrahi' | 'teiman';
 export type Gender = 'male' | 'female';
 
 export interface HazkaraSlots {

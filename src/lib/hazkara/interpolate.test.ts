@@ -3,8 +3,10 @@ import assert from 'node:assert/strict';
 import { renderHazkara } from './interpolate.ts';
 import { HAZKARA_TEMPLATES } from './templates.ts';
 
-test('all 4 variants render non-empty text containing the deceased name', () => {
-  for (const key of Object.keys(HAZKARA_TEMPLATES) as Array<keyof typeof HAZKARA_TEMPLATES>) {
+test('all 8 variants (4 rites x 2 genders) render non-empty text containing the deceased name', () => {
+  const keys = Object.keys(HAZKARA_TEMPLATES) as Array<keyof typeof HAZKARA_TEMPLATES>;
+  assert.equal(keys.length, 8);
+  for (const key of keys) {
     const text = renderHazkara(HAZKARA_TEMPLATES[key], { deceasedName: 'דוד' });
     assert.ok(text.length > 0, `${key} rendered empty`);
     assert.ok(text.includes('דוד'), `${key} missing the deceased's name`);
@@ -59,12 +61,27 @@ test('parentPhrase is omitted entirely when no parent name is given', () => {
   assert.ok(text.includes('נִשְׁמַת דוד שֶׁ'), 'name should flow directly into the next clause');
 });
 
-test('sephardi and ashkenazi templates use genuinely different wording', () => {
-  const ashkenazi = renderHazkara(HAZKARA_TEMPLATES['ashkenazi-male'], { deceasedName: 'דוד' });
-  const sephardi = renderHazkara(HAZKARA_TEMPLATES['sephardi-male'], { deceasedName: 'דוד' });
-  assert.notEqual(ashkenazi, sephardi);
-  assert.ok(ashkenazi.startsWith('אֵל מָלֵא רַחֲמִים'));
-  assert.ok(sephardi.startsWith('מְנוּחָה נְכוֹנָה בִּישִׁיבָה'));
+test('all 4 rites use genuinely different wording from each other', () => {
+  const rites = ['ashkenazi', 'sephardi', 'mizrahi', 'teiman'] as const;
+  const texts = rites.map((rite) => renderHazkara(HAZKARA_TEMPLATES[`${rite}-male`], { deceasedName: 'דוד' }));
+  const unique = new Set(texts);
+  assert.equal(unique.size, rites.length, 'expected 4 distinct texts, found duplicates');
+
+  assert.ok(texts[0].startsWith('אֵל מָלֵא רַחֲמִים'));
+  assert.ok(texts[1].startsWith('מְנוּחָה נְכוֹנָה בִּישִׁיבָה'));
+  assert.ok(texts[2].startsWith('ה׳ מָלֵא רַחֲמִים'));
+  assert.ok(texts[3].startsWith('ה׳ נָתַן וַה׳ לָקָח'));
+});
+
+test('mizrahi and teiman: female inflections apply correctly and both close with תנצב״ה', () => {
+  for (const rite of ['mizrahi', 'teiman'] as const) {
+    const male = renderHazkara(HAZKARA_TEMPLATES[`${rite}-male`], { deceasedName: 'דוד' });
+    const female = renderHazkara(HAZKARA_TEMPLATES[`${rite}-female`], { deceasedName: 'רחל' });
+    assert.ok(male.includes('נִפְטַר וְהָלַךְ'), `${rite}-male missing male inflection`);
+    assert.ok(female.includes('נִפְטְרָה וְהָלְכָה'), `${rite}-female missing female inflection`);
+    assert.ok(male.endsWith('תנצב״ה.'), `${rite}-male should close with תנצב״ה`);
+    assert.ok(female.endsWith('תנצב״ה.'), `${rite}-female should close with תנצב״ה`);
+  }
 });
 
 test('isPlaceholder flag is exported and true (drives the UI disclaimer)', async () => {

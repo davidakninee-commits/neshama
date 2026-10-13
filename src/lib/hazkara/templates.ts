@@ -7,9 +7,15 @@ import type { HazkaraTemplate, HazkaraToken } from './types.ts';
  * separation) is final and tested; the literal liturgical Hebrew wording
  * below is a best-effort draft and MUST be checked against a printed
  * siddur/Hashkava booklet or a rabbi before real-world use at a grave —
- * regional/communal wording for both אל מלא רחמים and השכבה varies, and
- * this ships one representative version per rite, not a survey of all of
- * them.
+ * regional/communal wording for all four rites varies, and this ships one
+ * representative version per rite, not a survey of all of them.
+ *
+ * The Mizrahi and Teiman texts in particular are deliberately kept SHORTER
+ * and built only from phrases that are universal across nearly all Jewish
+ * traditions (Job 1:21's "ה׳ נתן וה׳ לקח", the תנצב״ה closing) rather than
+ * more elaborate community-specific formulas - inventing confident-sounding
+ * "authentic" wording for traditions this project has less certainty about
+ * would be worse than being visibly simple and clearly flagged as a draft.
  */
 export const isPlaceholder = true;
 
@@ -62,6 +68,38 @@ const SEPHARDI_TOKENS: HazkaraToken[] = [
   { type: 'literal', text: ', אָמֵן.' },
 ];
 
+// Edot HaMizrach custom. Shared by both mizrahi-* templates below.
+const MIZRAHI_TOKENS: HazkaraToken[] = [
+  { type: 'literal', text: 'ה׳ מָלֵא רַחֲמִים, זֵכֶר ' },
+  { type: 'genderWord', male: 'צַדִּיק', female: 'צַדֶּקֶת' },
+  { type: 'literal', text: ' לִבְרָכָה. נֶפֶשׁ ' },
+  { type: 'deceasedName' },
+  { type: 'parentPhrase' },
+  { type: 'literal', text: ' אֲשֶׁר ' },
+  { type: 'genderWord', male: 'נִפְטַר וְהָלַךְ', female: 'נִפְטְרָה וְהָלְכָה' },
+  { type: 'literal', text: ' לְ' },
+  { type: 'genderWord', male: 'עוֹלָמוֹ', female: 'עוֹלָמָהּ' },
+  { type: 'literal', text: '. ה׳ הוּא ' },
+  { type: 'genderWord', male: 'נַחֲלָתוֹ', female: 'נַחֲלָתָהּ' },
+  { type: 'literal', text: ', וּתְהִי ' },
+  { type: 'genderWord', male: 'נִשְׁמָתוֹ', female: 'נִשְׁמָתָהּ' },
+  { type: 'literal', text: ' צְרוּרָה בִּצְרוֹר הַחַיִּים. תנצב״ה.' },
+];
+
+// Yemenite (Teiman) custom. Shared by both teiman-* templates below.
+const TEIMAN_TOKENS: HazkaraToken[] = [
+  { type: 'literal', text: 'ה׳ נָתַן וַה׳ לָקָח, יְהִי שֵׁם ה׳ מְבֹרָךְ. נֶפֶשׁ ' },
+  { type: 'deceasedName' },
+  { type: 'parentPhrase' },
+  { type: 'literal', text: ' אֲשֶׁר ' },
+  { type: 'genderWord', male: 'נִפְטַר וְהָלַךְ', female: 'נִפְטְרָה וְהָלְכָה' },
+  { type: 'literal', text: ' לְ' },
+  { type: 'genderWord', male: 'עוֹלָמוֹ', female: 'עוֹלָמָהּ' },
+  { type: 'literal', text: ', ה׳ יְנַחֵם אֶת בֵּיתוֹ, וּתְהִי ' },
+  { type: 'genderWord', male: 'נִשְׁמָתוֹ', female: 'נִשְׁמָתָהּ' },
+  { type: 'literal', text: ' צְרוּרָה בִּצְרוֹר הַחַיִּים. תנצב״ה.' },
+];
+
 export const HAZKARA_TEMPLATES: Record<`${HazkaraTemplate['rite']}-${HazkaraTemplate['gender']}`, HazkaraTemplate> = {
   'ashkenazi-male': {
     rite: 'ashkenazi',
@@ -86,5 +124,29 @@ export const HAZKARA_TEMPLATES: Record<`${HazkaraTemplate['rite']}-${HazkaraTemp
     gender: 'female',
     title: 'השכבה (נוסח ספרד) — לאישה',
     tokens: SEPHARDI_TOKENS,
+  },
+  'mizrahi-male': {
+    rite: 'mizrahi',
+    gender: 'male',
+    title: 'הזכרה (עדות המזרח) — לאיש',
+    tokens: MIZRAHI_TOKENS,
+  },
+  'mizrahi-female': {
+    rite: 'mizrahi',
+    gender: 'female',
+    title: 'הזכרה (עדות המזרח) — לאישה',
+    tokens: MIZRAHI_TOKENS,
+  },
+  'teiman-male': {
+    rite: 'teiman',
+    gender: 'male',
+    title: 'הזכרה (נוסח תימן) — לאיש',
+    tokens: TEIMAN_TOKENS,
+  },
+  'teiman-female': {
+    rite: 'teiman',
+    gender: 'female',
+    title: 'הזכרה (נוסח תימן) — לאישה',
+    tokens: TEIMAN_TOKENS,
   },
 };
