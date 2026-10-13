@@ -2,7 +2,7 @@
 // Transforms data/raw/tehillim.json (raw Sefaria export) into compact
 // per-chapter JSON files under data/content/tehillim/, committed to git.
 
-import { readFile, writeFile, mkdir, appendFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { normalizeDeep } from './lib/normalize.mjs';
 
@@ -43,10 +43,13 @@ async function main() {
     );
   }
 
+  // Overwrite (not append) and run first in the `npm run ingest` pipeline,
+  // so SOURCES.md resets cleanly on every re-run; build-mishnah.mjs appends
+  // its own section after this one.
   await mkdir(`${ROOT}data/content`, { recursive: true });
-  await appendFile(
+  await writeFile(
     SOURCES_PATH,
-    `## תהילים\n\n- מקור: Sefaria-Export, versionTitle "${raw.versionTitle ?? 'Tanach with Nikkud'}"\n- רישיון: Public Domain\n- ${chapters.length} פרקים\n\n`,
+    `# מקורות הטקסט\n\nנוצר אוטומטית על ידי \`scripts/ingest/build-tehillim.mjs\` ו-\`build-mishnah.mjs\`.\nכל הטקסטים מגיעים מ-[Sefaria-Export](https://github.com/Sefaria/Sefaria-Export)\n(bucket פתוח \`gs://sefaria-export\`), נוסחים ציבוריים (Public Domain) בלבד.\n\n## תהילים\n\n- מקור: Sefaria-Export, versionTitle "${raw.versionTitle ?? 'Tanach with Nikkud'}"\n- רישיון: Public Domain\n- ${chapters.length} פרקים\n\n`,
     'utf8'
   );
 

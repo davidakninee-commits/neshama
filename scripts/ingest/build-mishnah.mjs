@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 // Transforms data/raw/mishnah/*.json (raw Sefaria export, one file per
-// tractate) into compact per-tractate JSON files under data/content/mishnah/,
-// committed to git. index.json is ordered by the traditional Mishnaic (ש"ס)
-// sequence, not the bucket's alphabetical listing order.
+// tractate) into compact per-tractate JSON files under public/data/mishnah/,
+// committed to git. Lives under public/ (not data/content/, unlike Tehillim)
+// because the Mishnah-by-name feature fetches a tractate client-side at
+// runtime - which tractate is needed isn't known until the visitor types a
+// name - so the same files serve both build-time page generation and
+// runtime fetch() from one source of truth. index.json is ordered by the
+// traditional Mishnaic (ש"ס) sequence, not the bucket's alphabetical
+// listing order.
 
 import { readFile, writeFile, mkdir, appendFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -11,7 +16,7 @@ import { normalizeDeep } from './lib/normalize.mjs';
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const MANIFEST_PATH = fileURLToPath(new URL('./manifest.json', import.meta.url));
 const RAW_DIR = `${ROOT}data/raw/mishnah`;
-const OUT_DIR = `${ROOT}data/content/mishnah`;
+const OUT_DIR = `${ROOT}public/data/mishnah`;
 const SOURCES_PATH = `${ROOT}data/content/SOURCES.md`;
 
 function slugify(name) {
