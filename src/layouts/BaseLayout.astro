@@ -1,5 +1,6 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_LANG, SITE_DIR } from '../consts.ts';
+import PageBanner from '../components/PageBanner.astro';
 import '../styles/global.css';
 import '../styles/print.css';
 
@@ -19,6 +20,7 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
     <meta name="description" content={SITE_DESCRIPTION} />
     <meta name="theme-color" content="#1e3a5f" />
     <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <title>{pageTitle}</title>
@@ -27,6 +29,7 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
     </script>
   </head>
   <body>
+    <PageBanner title={title ?? SITE_TITLE} isHome={!title} />
     <main>
       <slot />
     </main>

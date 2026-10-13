@@ -13,8 +13,6 @@ const total = loadTehillimIndex().length;
 ---
 
 <PrintableLayout title={`תהילים פרק ${chapterNum}`}>
-  <h1>תהילים פרק {chapterNum}</h1>
-
   <ol class="verse-list prayer-text">
     {verses.map((v) => <li>{v}</li>)}
   </ol>

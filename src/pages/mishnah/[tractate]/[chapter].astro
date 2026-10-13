@@ -20,8 +20,6 @@ const mishnayot = chapters[chapterNum - 1];
 ---
 
 <PrintableLayout title={`${tractateHe} פרק ${chapterNum}`}>
-  <h1>{tractateHe} פרק {chapterNum}</h1>
-
   <ol class="mishnah-list prayer-text">
     {mishnayot.map((m) => <li>{m}</li>)}
   </ol>

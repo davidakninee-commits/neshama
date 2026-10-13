@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  isHome?: boolean;
+}
+
+const { title, isHome = false } = Astro.props;
+---
+
+<div class:list={['page-banner', { 'page-banner--home': isHome }]}>
+  <div class="banner-controls">
+    <button type="button" id="text-scale-down" aria-label="הקטן טקסט">א-</button>
+    <button type="button" id="text-scale-up" aria-label="הגדל טקסט">א+</button>
+  </div>
+  <h1>{title}</h1>
+</div>
+
+<script>
+  import { initTextScale, increaseTextScale, decreaseTextScale } from '../lib/ui/textScale.ts';
+
+  initTextScale();
+  document.getElementById('text-scale-down')?.addEventListener('click', decreaseTextScale);
+  document.getElementById('text-scale-up')?.addEventListener('click', increaseTextScale);
+</script>

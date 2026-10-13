@@ -27,6 +27,9 @@
   /* טיפוגרפיה */
   --font-prayer: 'Frank Ruhl Libre', serif; /* תהילים, משניות, תפילות */
   --font-ui: 'Heebo', sans-serif; /* כפתורים, שדות קלט, ממשק */
+
+  /* מכפיל גודל טקסט נגיש - מותאם ע"י כפתורי א-/א+, ראו src/lib/ui/textScale.ts */
+  --text-scale: 1;
 }
 
 * {
@@ -70,22 +73,94 @@ button {
 /* כללי טיפוגרפיה לקריאת תפילה מנוקדת */
 .prayer-text {
   font-family: var(--font-prayer);
-  font-size: 22px; /* גודל קריא לעמידה בשטח */
+  font-size: calc(22px * var(--text-scale)); /* גודל קריא לעמידה בשטח, מותאם ע"י א-/א+ */
   line-height: 1.8; /* מרווח חובה למניעת התנגשות ניקוד */
   color: var(--text-primary);
   text-align: right;
   direction: rtl;
 }
 
-/* תג אות השם / נשמה */
+/* תג אות השם / נשמה - בצורת חותם/מדליה מפורזת */
 .letter-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
   background-color: var(--gold-accent);
   color: #ffffff;
   font-family: var(--font-prayer);
   font-weight: bold;
-  border-radius: 0.375rem;
-  padding: 0.15em 0.6em;
+  font-size: 1.15rem;
+  clip-path: polygon(
+    50% 0%, 59.35% 9.05%, 71.69% 4.95%, 76.19% 17.16%, 89.09% 18.83%, 87.84% 31.78%,
+    98.75% 38.87%, 92% 50%, 98.75% 61.13%, 87.84% 68.22%, 89.09% 81.17%, 76.19% 82.84%,
+    71.69% 95.05%, 59.35% 90.95%, 50% 100%, 40.65% 90.95%, 28.31% 95.05%, 23.81% 82.84%,
+    10.91% 81.17%, 12.16% 68.22%, 1.25% 61.13%, 8% 50%, 1.25% 38.87%, 12.16% 31.78%,
+    10.91% 18.83%, 23.81% 17.16%, 28.31% 4.95%, 40.65% 9.05%
+  );
+}
+
+/* רצועת כותרת מעוטרת עם גבול גפן זהב, בראש כל עמוד */
+.page-banner {
+  background-color: var(--primary-accent);
+  color: #ffffff;
+  position: relative;
+  padding: 22px 20px 26px;
+  text-align: center;
+}
+
+.page-banner::before,
+.page-banner::after {
+  content: '';
+  display: block;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='14'%3E%3Cg fill='none' stroke='%23C5A059' stroke-width='1.4'%3E%3Cpath d='M0,7 C8,0 8,14 16,7 C24,0 24,14 32,7 C40,0 40,14 48,7 C56,0 56,14 64,7'/%3E%3C/g%3E%3Cg fill='%23C5A059'%3E%3Ccircle cx='0' cy='7' r='2'/%3E%3Ccircle cx='16' cy='7' r='2'/%3E%3Ccircle cx='32' cy='7' r='2'/%3E%3Ccircle cx='48' cy='7' r='2'/%3E%3Ccircle cx='64' cy='7' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 64px 14px;
+}
+
+.page-banner::before {
+  margin-bottom: 14px;
+}
+
+.page-banner::after {
+  margin-top: 14px;
+}
+
+.page-banner h1 {
+  font-family: var(--font-prayer);
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.page-banner.page-banner--home h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.banner-controls {
+  position: absolute;
+  top: 18px;
+  inset-inline-start: 20px;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.banner-controls button {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: #ffffff;
+}
+
+.banner-controls button:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 /* תוצאה אחת (תהילים/משנה לפי אות) בתוך דף תוצאות */

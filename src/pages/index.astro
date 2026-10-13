@@ -6,12 +6,13 @@ const { verses } = loadTehillimChapter(119);
 ---
 
 <PrintableLayout>
-  <h1>נשמה</h1>
   <p>הקלידו את שם הנפטר בעברית, ותופיע תהילים קי"ט לפי אותיות השם.</p>
-  <p class="site-nav">
-    <a href="/tehillim">ספר תהילים</a> · <a href="/mishnah">ששה סדרי משנה</a> ·
-    <a href="/mishnah/by-name">משניות לפי שם</a> · <a href="/hazkara">הזכרה והשכבה</a>
-  </p>
+  <nav class="site-nav">
+    <a href="/tehillim">ספר תהילים</a>
+    <a href="/mishnah">ששה סדרי משנה</a>
+    <a href="/mishnah/by-name">משניות לפי שם</a>
+    <a href="/hazkara">הזכרה והשכבה</a>
+  </nav>
 
   <form id="name-form" class="name-form">
     <label for="name-input">שם הנפטר</label>
@@ -58,3 +59,27 @@ const { verses } = loadTehillimChapter(119);
     });
   </script>
 </PrintableLayout>
+
+<style>
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.25rem 0 1.5rem;
+  }
+
+  .site-nav a {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+  }
+
+  .site-nav a:hover {
+    border-color: var(--gold-accent);
+    color: var(--gold-hover);
+  }
+</style>
