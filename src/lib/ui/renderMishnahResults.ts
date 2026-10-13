@@ -1,5 +1,6 @@
 import type { MishnahMatch } from '../mishnahByName/types.ts';
 import { fetchMishnahText } from '../mishnahByName/fetchMishnahText.ts';
+import { createResultSection, renderEmptyState } from './resultSection.ts';
 
 /**
  * Client-side renderer: given the MishnahMatches computed by
@@ -14,24 +15,13 @@ export async function renderMishnahResults(
   container.replaceChildren();
 
   if (matches.length === 0) {
-    const empty = document.createElement('p');
-    empty.className = 'empty-state';
-    empty.textContent = 'נא להקליד שם בעברית.';
-    container.appendChild(empty);
+    renderEmptyState(container);
     return;
   }
 
   for (const match of matches) {
-    const section = document.createElement('section');
-    section.className = 'stanza stanza--name';
-
-    const heading = document.createElement('h3');
-    const badge = document.createElement('span');
-    badge.className = 'letter-badge';
-    badge.textContent = match.letter;
-    heading.appendChild(badge);
-    heading.append(` ${match.ref.tractateHe} ${match.ref.chapter}:${match.ref.mishnah}`);
-    section.appendChild(heading);
+    const label = `${match.ref.tractateHe} ${match.ref.chapter}:${match.ref.mishnah}`;
+    const section = createResultSection(match.letter, label, 'stanza stanza--name');
 
     const p = document.createElement('p');
     p.className = 'prayer-text mishnah-text';

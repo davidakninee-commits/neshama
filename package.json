@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/build-sw.mjs",
+    "build": "astro build && node scripts/build-sw.mjs && node scripts/verify-sw-manifest.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "ingest:discover": "node scripts/ingest/discover.mjs",
