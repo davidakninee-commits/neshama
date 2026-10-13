@@ -1,10 +1,31 @@
+/* Self-hosted (no CDN) — required for offline-first use at a cemetery with
+   weak/no signal. See @fontsource/heebo and @fontsource/frank-ruhl-libre in
+   package.json. */
+@import '@fontsource/heebo/400.css';
+@import '@fontsource/heebo/500.css';
+@import '@fontsource/heebo/700.css';
+@import '@fontsource/frank-ruhl-libre/400.css';
+@import '@fontsource/frank-ruhl-libre/600.css';
+@import '@fontsource/frank-ruhl-libre/700.css';
+
 :root {
-  --color-bg: #ffffff;
-  --color-text: #1a1a1a;
-  --color-accent: #4a3f35;
-  --color-border: #d9d2c7;
-  --font-ui: system-ui, sans-serif; /* swapped for Heebo in Phase 4 */
-  --font-hebrew-text: Georgia, serif; /* swapped for Taamey Frank CLM in Phase 4 */
+  /* רקע ומשטחים */
+  --bg-primary: #f9f8f5; /* קלף בהיר / Off-White למניעת סינוור בשמש ישירה */
+  --bg-surface: #ffffff; /* כרטיסים ומכולות תוכן */
+  --border-light: #e8e5df; /* קווי הפרדה ומסגרות עדינות */
+
+  /* טקסט */
+  --text-primary: #1f2429; /* פחם כהה — קריאות מקסימלית בניקוד */
+  --text-muted: #59636e; /* טקסט משני, הנחיות ו-placeholders */
+
+  /* מיתוג והדגשה */
+  --primary-accent: #1e3a5f; /* כחול מלכותי עמוק ומאופק */
+  --gold-accent: #c5a059; /* זהב מעודן / Warm Bronze */
+  --gold-hover: #a68a56;
+
+  /* טיפוגרפיה */
+  --font-prayer: 'Frank Ruhl Libre', serif; /* תהילים, משניות, תפילות */
+  --font-ui: 'Heebo', sans-serif; /* כפתורים, שדות קלט, ממשק */
 }
 
 * {
@@ -18,8 +39,8 @@ body {
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--font-ui);
   line-height: 1.6;
 }
@@ -33,14 +54,35 @@ main {
 h1,
 h2,
 h3 {
-  font-family: var(--font-hebrew-text);
+  font-family: var(--font-prayer);
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--primary-accent);
 }
 
 button {
   font: inherit;
   cursor: pointer;
+}
+
+/* כללי טיפוגרפיה לקריאת תפילה מנוקדת */
+.prayer-text {
+  font-family: var(--font-prayer);
+  font-size: 22px; /* גודל קריא לעמידה בשטח */
+  line-height: 1.8; /* מרווח חובה למניעת התנגשות ניקוד */
+  color: var(--text-primary);
+  text-align: right;
+  direction: rtl;
+}
+
+/* תג אות השם / נשמה */
+.letter-badge {
+  display: inline-block;
+  background-color: var(--gold-accent);
+  color: #ffffff;
+  font-family: var(--font-prayer);
+  font-weight: bold;
+  border-radius: 0.375rem;
+  padding: 0.15em 0.6em;
 }

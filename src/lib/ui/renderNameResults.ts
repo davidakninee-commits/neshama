@@ -26,12 +26,15 @@ export function renderNameResults(
     section.className = `stanza stanza--${range.source}`;
 
     const heading = document.createElement('h3');
-    heading.textContent =
-      range.source === 'neshama' ? `נשמה — אות ${range.letter}` : `אות ${range.letter}`;
+    const badge = document.createElement('span');
+    badge.className = 'letter-badge';
+    badge.textContent = range.letter;
+    heading.appendChild(badge);
+    heading.append(range.source === 'neshama' ? ' נשמה' : ' אות השם');
     section.appendChild(heading);
 
     const list = document.createElement('ol');
-    list.className = 'verse-list';
+    list.className = 'verse-list prayer-text';
     list.start = range.startVerse;
     for (let v = range.startVerse; v <= range.endVerse; v++) {
       const li = document.createElement('li');
