@@ -20,5 +20,11 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# ingestion scratch space (re-downloadable from Sefaria-Export; not committed)
+data/raw/
+
+# leftover session-local tooling, not part of the project
+.claude/
+
 # jetbrains setting folder
 .idea/

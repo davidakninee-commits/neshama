@@ -1,5 +1,5 @@
 {
-  "name": "helpless-horizon",
+  "name": "neshama",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -12,6 +12,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/frank-ruhl-libre": "^5.3.0",
+    "@fontsource/heebo": "^5.3.0",
+    "@fontsource/noto-serif-hebrew": "^5.3.0",
     "astro": "^7.3.8"
+  },
+  "devDependencies": {
+    "vite-plugin-pwa": "^2.0.0"
   }
 }
