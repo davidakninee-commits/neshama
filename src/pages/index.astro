@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import PrintableLayout from '../layouts/PrintableLayout.astro';
 import { loadTehillimChapter } from '../lib/content/loadTehillim.ts';
 
 const { verses } = loadTehillimChapter(119);
 ---
 
-<BaseLayout>
+<PrintableLayout>
   <h1>נשמה</h1>
   <p>הקלידו את שם הנפטר בעברית, ותופיע תהילים קי"ט לפי אותיות השם.</p>
   <p class="site-nav">
@@ -57,7 +57,7 @@ const { verses } = loadTehillimChapter(119);
       renderNameResults(results, verses119, ranges);
     });
   </script>
-</BaseLayout>
+</PrintableLayout>
 
 <style>
   form {

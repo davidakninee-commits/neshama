@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import PrintableLayout from '../../layouts/PrintableLayout.astro';
 import ChapterNav from '../../components/ChapterNav.astro';
 import { loadTehillimIndex, loadTehillimChapter } from '../../lib/content/loadTehillim.ts';
 
@@ -12,7 +12,7 @@ const { verses } = loadTehillimChapter(chapterNum);
 const total = loadTehillimIndex().length;
 ---
 
-<BaseLayout title={`תהילים פרק ${chapterNum}`}>
+<PrintableLayout title={`תהילים פרק ${chapterNum}`}>
   <h1>תהילים פרק {chapterNum}</h1>
 
   <ol class="verse-list prayer-text">
@@ -20,7 +20,7 @@ const total = loadTehillimIndex().length;
   </ol>
 
   <ChapterNav basePath="/tehillim" current={chapterNum} total={total} />
-</BaseLayout>
+</PrintableLayout>
 
 <style>
   .verse-list {

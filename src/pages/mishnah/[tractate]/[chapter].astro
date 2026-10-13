@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PrintableLayout from '../../../layouts/PrintableLayout.astro';
 import TractateNav from '../../../components/TractateNav.astro';
 import { loadMishnahIndex, loadMishnahTractate } from '../../../lib/content/loadMishnah.ts';
 
@@ -19,7 +19,7 @@ const { chapters } = loadMishnahTractate(tractate!);
 const mishnayot = chapters[chapterNum - 1];
 ---
 
-<BaseLayout title={`${tractateHe} פרק ${chapterNum}`}>
+<PrintableLayout title={`${tractateHe} פרק ${chapterNum}`}>
   <h1>{tractateHe} פרק {chapterNum}</h1>
 
   <ol class="mishnah-list prayer-text">
@@ -27,7 +27,7 @@ const mishnayot = chapters[chapterNum - 1];
   </ol>
 
   <TractateNav tractateSlug={tractate!} tractateHe={tractateHe} current={chapterNum} total={chapterCount} />
-</BaseLayout>
+</PrintableLayout>
 
 <style>
   .mishnah-list {

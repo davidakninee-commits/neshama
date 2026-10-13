@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import PrintableLayout from '../../layouts/PrintableLayout.astro';
 import { loadMishnahIndex } from '../../lib/content/loadMishnah.ts';
 
 const SEDER_HE: Record<string, string> = {
@@ -15,7 +15,7 @@ const index = loadMishnahIndex();
 const seders = [...new Set(index.map((t) => t.seder))];
 ---
 
-<BaseLayout title="משנה">
+<PrintableLayout title="משנה">
   <h1>ששה סדרי משנה</h1>
   <p><a href="/">&larr; חזרה לדף הבית</a> · <a href="/mishnah/by-name">משניות לפי אותיות השם</a></p>
 
@@ -35,7 +35,7 @@ const seders = [...new Set(index.map((t) => t.seder))];
       </section>
     ))
   }
-</BaseLayout>
+</PrintableLayout>
 
 <style>
   .tractate-list {

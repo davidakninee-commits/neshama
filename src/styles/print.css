@@ -1,0 +1,32 @@
+/* Hidden on screen; the @media print block below is what actually
+   guarantees it appears - that guarantee holds regardless of whether
+   printing was triggered via the in-page button or the browser's native
+   Ctrl+P/Cmd+P, since window.print() cannot be intercepted or vetoed from
+   JS (the HTML spec's printing steps fire unconditionally). */
+.print-warning {
+  display: none;
+}
+
+@media print {
+  .print-warning {
+    display: block !important;
+    border: 2px solid #000;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-ui, sans-serif);
+    font-size: 0.95rem;
+    color: #000;
+    background: #fff;
+  }
+
+  /* Interactive chrome has no purpose on paper. */
+  .print-trigger,
+  .site-nav,
+  .breadcrumb,
+  nav,
+  form,
+  dialog,
+  button {
+    display: none !important;
+  }
+}

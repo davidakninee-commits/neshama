@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PrintableLayout from '../../../layouts/PrintableLayout.astro';
 import { loadMishnahIndex } from '../../../lib/content/loadMishnah.ts';
 
 export function getStaticPaths() {
@@ -14,7 +14,7 @@ const { tractateHe, chapterCount } = Astro.props;
 const chapters = Array.from({ length: chapterCount }, (_, i) => i + 1);
 ---
 
-<BaseLayout title={tractateHe}>
+<PrintableLayout title={tractateHe}>
   <p class="breadcrumb"><a href="/mishnah">ששה סדרי משנה</a></p>
   <h1>{tractateHe}</h1>
 
@@ -27,7 +27,7 @@ const chapters = Array.from({ length: chapterCount }, (_, i) => i + 1);
       ))
     }
   </ul>
-</BaseLayout>
+</PrintableLayout>
 
 <style>
   .breadcrumb {

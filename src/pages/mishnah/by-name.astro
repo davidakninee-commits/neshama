@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import PrintableLayout from '../../layouts/PrintableLayout.astro';
 import { isPlaceholder } from '../../lib/mishnahByName/defaultMapping.ts';
 ---
 
-<BaseLayout title="משניות לפי אותיות השם">
+<PrintableLayout title="משניות לפי אותיות השם">
   <h1>משניות לפי אותיות השם</h1>
   <p><a href="/mishnah">&larr; חזרה לרשימת הסדרים</a></p>
 
@@ -50,7 +50,7 @@ import { isPlaceholder } from '../../lib/mishnahByName/defaultMapping.ts';
       renderMishnahResults(results, matches);
     });
   </script>
-</BaseLayout>
+</PrintableLayout>
 
 <style>
   .disclaimer {

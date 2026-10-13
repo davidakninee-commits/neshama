@@ -1,0 +1,29 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PrintWarningBanner from '../components/PrintWarningBanner.astro';
+import PrintButton from '../components/PrintButton.astro';
+import ConfirmPrintModal from '../components/ConfirmPrintModal.astro';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <PrintWarningBanner />
+  <div class="page-actions">
+    <PrintButton />
+  </div>
+  <slot />
+  <ConfirmPrintModal />
+</BaseLayout>
+
+<style>
+  .page-actions {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 1rem;
+  }
+</style>

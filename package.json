@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/build-sw.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "ingest:discover": "node scripts/ingest/discover.mjs",
@@ -21,6 +21,6 @@
     "astro": "^7.3.8"
   },
   "devDependencies": {
-    "vite-plugin-pwa": "^2.0.0"
+    "workbox-build": "^7.4.1"
   }
 }

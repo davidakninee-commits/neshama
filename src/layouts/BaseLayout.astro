@@ -1,6 +1,7 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_LANG, SITE_DIR } from '../consts.ts';
 import '../styles/global.css';
+import '../styles/print.css';
 
 interface Props {
   title?: string;
@@ -16,7 +17,14 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={SITE_DESCRIPTION} />
+    <meta name="theme-color" content="#1e3a5f" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <title>{pageTitle}</title>
+    <script>
+      import '../pwa-register.ts';
+    </script>
   </head>
   <body>
     <main>

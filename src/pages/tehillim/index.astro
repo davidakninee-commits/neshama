@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import PrintableLayout from '../../layouts/PrintableLayout.astro';
 import { loadTehillimIndex } from '../../lib/content/loadTehillim.ts';
 
 const chapters = loadTehillimIndex();
 ---
 
-<BaseLayout title="תהילים">
+<PrintableLayout title="תהילים">
   <h1>ספר תהילים</h1>
   <p><a href="/">&larr; חזרה לדף הבית</a></p>
 
@@ -18,7 +18,7 @@ const chapters = loadTehillimIndex();
       ))
     }
   </ul>
-</BaseLayout>
+</PrintableLayout>
 
 <style>
   .chapter-grid {
