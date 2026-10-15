@@ -2,6 +2,7 @@
 import PrintableLayout from '../../../layouts/PrintableLayout.astro';
 import TractateNav from '../../../components/TractateNav.astro';
 import { loadMishnahIndex, loadMishnahTractate } from '../../../lib/content/loadMishnah.ts';
+import { toHebrewNumeral } from '../../../lib/hebrew/gematria.ts';
 
 export function getStaticPaths() {
   return loadMishnahIndex().flatMap((t) =>
@@ -19,7 +20,7 @@ const { chapters } = loadMishnahTractate(tractate!);
 const mishnayot = chapters[chapterNum - 1];
 ---
 
-<PrintableLayout title={`${tractateHe} פרק ${chapterNum}`}>
+<PrintableLayout title={`${tractateHe} פרק ${toHebrewNumeral(chapterNum)}`}>
   <ol class="mishnah-list prayer-text">
     {mishnayot.map((m) => <li>{m}</li>)}
   </ol>

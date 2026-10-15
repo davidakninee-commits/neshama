@@ -1,6 +1,7 @@
 import type { MishnahMatch } from '../mishnahByName/types.ts';
 import { fetchMishnahText } from '../mishnahByName/fetchMishnahText.ts';
 import { createResultSection, renderEmptyState } from './resultSection.ts';
+import { toHebrewNumeral } from '../hebrew/gematria.ts';
 
 /**
  * Client-side renderer: given the MishnahMatches computed by
@@ -20,7 +21,7 @@ export async function renderMishnahResults(
   }
 
   for (const match of matches) {
-    const label = `${match.ref.tractateHe} ${match.ref.chapter}:${match.ref.mishnah}`;
+    const label = `${match.ref.tractateHe} ${toHebrewNumeral(match.ref.chapter)}:${toHebrewNumeral(match.ref.mishnah)}`;
     const section = createResultSection(match.letter, label, 'stanza stanza--name');
 
     const p = document.createElement('p');

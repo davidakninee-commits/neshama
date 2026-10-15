@@ -1,4 +1,6 @@
 ---
+import { toHebrewNumeral } from '../lib/hebrew/gematria.ts';
+
 interface Props {
   tractateSlug: string;
   tractateHe: string;
@@ -17,9 +19,9 @@ const next = current < total ? current + 1 : null;
 </p>
 
 <nav class="chapter-nav">
-  {prev ? <a href={`${basePath}/${prev}`}>&rarr; פרק {prev}</a> : <span />}
+  {prev ? <a href={`${basePath}/${prev}`}>&rarr; פרק {toHebrewNumeral(prev)}</a> : <span />}
   <a href={basePath}>רשימת פרקים</a>
-  {next ? <a href={`${basePath}/${next}`}>פרק {next} &larr;</a> : <span />}
+  {next ? <a href={`${basePath}/${next}`}>פרק {toHebrewNumeral(next)} &larr;</a> : <span />}
 </nav>
 
 <style>

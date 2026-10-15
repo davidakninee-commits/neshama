@@ -2,6 +2,7 @@
 import PrintableLayout from '../../layouts/PrintableLayout.astro';
 import ChapterNav from '../../components/ChapterNav.astro';
 import { loadTehillimIndex, loadTehillimChapter } from '../../lib/content/loadTehillim.ts';
+import { toHebrewNumeral } from '../../lib/hebrew/gematria.ts';
 
 export function getStaticPaths() {
   return loadTehillimIndex().map((c) => ({ params: { chapter: String(c.chapter) } }));
@@ -12,7 +13,7 @@ const { verses } = loadTehillimChapter(chapterNum);
 const total = loadTehillimIndex().length;
 ---
 
-<PrintableLayout title={`תהילים פרק ${chapterNum}`}>
+<PrintableLayout title={`תהילים פרק ${toHebrewNumeral(chapterNum)}`}>
   <ol class="verse-list prayer-text">
     {verses.map((v) => <li>{v}</li>)}
   </ol>

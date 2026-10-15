@@ -1,6 +1,7 @@
 ---
 import PrintableLayout from '../../../layouts/PrintableLayout.astro';
 import { loadMishnahIndex } from '../../../lib/content/loadMishnah.ts';
+import { toHebrewNumeral } from '../../../lib/hebrew/gematria.ts';
 
 export function getStaticPaths() {
   return loadMishnahIndex().map((t) => ({
@@ -21,7 +22,7 @@ const chapters = Array.from({ length: chapterCount }, (_, i) => i + 1);
     {
       chapters.map((c) => (
         <li>
-          <a href={`/mishnah/${tractate}/${c}`}>פרק {c}</a>
+          <a href={`/mishnah/${tractate}/${c}`}>פרק {toHebrewNumeral(c)}</a>
         </li>
       ))
     }

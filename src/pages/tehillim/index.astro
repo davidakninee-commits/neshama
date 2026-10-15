@@ -1,6 +1,7 @@
 ---
 import PrintableLayout from '../../layouts/PrintableLayout.astro';
 import { loadTehillimIndex } from '../../lib/content/loadTehillim.ts';
+import { toHebrewNumeral } from '../../lib/hebrew/gematria.ts';
 
 const chapters = loadTehillimIndex();
 ---
@@ -12,7 +13,7 @@ const chapters = loadTehillimIndex();
     {
       chapters.map((c) => (
         <li>
-          <a href={`/tehillim/${c.chapter}`}>פרק {c.chapter}</a>
+          <a href={`/tehillim/${c.chapter}`}>פרק {toHebrewNumeral(c.chapter)}</a>
         </li>
       ))
     }
