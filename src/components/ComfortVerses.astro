@@ -1,0 +1,68 @@
+---
+interface Verse {
+  text: string;
+  reference: string;
+}
+
+interface Props {
+  verses: Verse[];
+}
+
+const { verses } = Astro.props;
+---
+
+<section class="comfort-verses" aria-label="מילים לנחמה">
+  <h2>מילים לנחמה</h2>
+  <ul>
+    {
+      verses.map((verse) => (
+        <li>
+          <p class="verse-text prayer-text">{verse.text}</p>
+          <p class="verse-ref">{verse.reference}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .comfort-verses {
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 0.5rem;
+  }
+
+  .comfort-verses h2 {
+    font-size: 1.2rem;
+    margin: 0 0 1.25rem;
+    text-align: center;
+  }
+
+  .comfort-verses ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .comfort-verses li {
+    text-align: center;
+  }
+
+  .verse-text {
+    font-size: calc(18px * var(--text-scale));
+    line-height: 1.7;
+    margin: 0 0 0.4rem;
+  }
+
+  .verse-ref {
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--gold-hover);
+    margin: 0;
+  }
+</style>

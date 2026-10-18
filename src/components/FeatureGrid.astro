@@ -1,0 +1,60 @@
+---
+const features = [
+  { href: '/tehillim', title: 'ספר תהילים', description: 'כל ספר תהילים, פרק אחר פרק, בעברית מנוקדת.' },
+  { href: '/mishnah', title: 'ששה סדרי משנה', description: 'לימוד וזיכרון, לפי הסדר המסורתי של הש"ס.' },
+  { href: '/mishnah/by-name', title: 'משניות לפי שם', description: 'משניות הפותחות ומסתיימות באותיות השם.' },
+  { href: '/hazkara', title: 'הזכרה והשכבה', description: 'נוסחי אל מלא רחמים והשכבה — גם לביקור קבר.' },
+  { href: '/kaddish', title: 'קדיש יתום', description: 'ארבעה נוסחים, להכנה לפני אמירה במניין.' },
+  { href: '/yahrzeit', title: 'חישוב יארצייט', description: 'המרה מתאריך לועזי לעברי, וחישוב המועדים הבאים.' },
+];
+---
+
+<nav class="feature-grid" aria-label="תכני האתר">
+  {
+    features.map((feature) => (
+      <a class="feature-card" href={feature.href}>
+        <span class="feature-title">{feature.title}</span>
+        <span class="feature-description">{feature.description}</span>
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 0.9rem;
+    margin: 2rem 0;
+  }
+
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-decoration: none;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 0.5rem;
+    padding: 1rem 1.1rem;
+    transition: border-color 0.15s ease;
+  }
+
+  .feature-card:hover {
+    border-color: var(--gold-accent);
+  }
+
+  .feature-title {
+    font-family: var(--font-prayer);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .feature-description {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+</style>

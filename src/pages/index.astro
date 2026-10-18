@@ -1,21 +1,32 @@
 ---
 import PrintableLayout from '../layouts/PrintableLayout.astro';
 import VirtualCandle from '../components/VirtualCandle.astro';
+import HomeGuide from '../components/HomeGuide.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import ComfortVerses from '../components/ComfortVerses.astro';
+import MourningMilestones from '../components/MourningMilestones.astro';
 import { loadTehillimChapter } from '../lib/content/loadTehillim.ts';
 
 const { verses } = loadTehillimChapter(119);
+const ps116 = loadTehillimChapter(116);
+
+const comfortVerses = [
+  {
+    text: 'וְיָשֹׁב הֶעָפָר עַל הָאָרֶץ כְּשֶׁהָיָה, וְהָרוּחַ תָּשׁוּב אֶל הָאֱלֹהִים אֲשֶׁר נְתָנָהּ.',
+    reference: 'קהלת יב, ז',
+  },
+  { text: ps116.verses[14], reference: 'תהלים קטז, טו' },
+  {
+    text: 'בִּלַּע הַמָּוֶת לָנֶצַח, וּמָחָה אֲדֹנָי ה׳ דִּמְעָה מֵעַל כָּל פָּנִים.',
+    reference: 'ישעיהו כה, ח',
+  },
+];
 ---
 
 <PrintableLayout>
   <p>הקלידו את שם הנפטר בעברית, ותופיע תהילים קי"ט לפי אותיות השם.</p>
-  <nav class="site-nav">
-    <a href="/tehillim">ספר תהילים</a>
-    <a href="/mishnah">ששה סדרי משנה</a>
-    <a href="/mishnah/by-name">משניות לפי שם</a>
-    <a href="/hazkara">הזכרה והשכבה</a>
-    <a href="/kaddish">קדיש יתום</a>
-    <a href="/yahrzeit">חישוב יארצייט</a>
-  </nav>
+
+  <HomeGuide />
 
   <form id="name-form" class="name-form">
     <label for="name-input">שם הנפטר</label>
@@ -37,6 +48,12 @@ const { verses } = loadTehillimChapter(119);
   <div id="results" aria-live="polite"></div>
 
   <VirtualCandle />
+
+  <FeatureGrid />
+
+  <ComfortVerses verses={comfortVerses} />
+
+  <MourningMilestones />
 
   {/* Our own bundled Public Domain Tanakh text, not user input — but the
       </script> escape is cheap defensive practice for any inline JSON. */}
@@ -64,27 +81,3 @@ const { verses } = loadTehillimChapter(119);
     });
   </script>
 </PrintableLayout>
-
-<style>
-  .site-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1.25rem 0 1.5rem;
-  }
-
-  .site-nav a {
-    font-family: var(--font-ui);
-    font-size: 0.9rem;
-    text-decoration: none;
-    color: var(--text-primary);
-    border: 1px solid var(--border-light);
-    border-radius: 999px;
-    padding: 0.4rem 0.9rem;
-  }
-
-  .site-nav a:hover {
-    border-color: var(--gold-accent);
-    color: var(--gold-hover);
-  }
-</style>

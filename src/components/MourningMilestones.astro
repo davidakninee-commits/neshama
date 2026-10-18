@@ -1,0 +1,85 @@
+---
+const milestones = [
+  { name: 'שבעה', timing: '7 הימים הראשונים', text: 'תקופת האבל הראשונית, הנהוגה בבית האבל.' },
+  { name: 'שלושים', timing: 'עד תום 30 יום', text: 'המשך תקופת האבל, בהגבלות מצומצמות יותר.' },
+  { name: 'שנה', timing: '12 חודש', text: 'תקופת אמירת קדיש יתום (לפי המנהג הרווח — 11 חודש).' },
+  { name: 'יארצייט', timing: 'מדי שנה', text: 'יום הזיכרון השנתי, לפי התאריך העברי.', href: '/yahrzeit' },
+];
+---
+
+<section class="mourning-milestones" aria-label="ציוני דרך באבלות">
+  <h2>ציוני דרך באבלות</h2>
+  <dl>
+    {
+      milestones.map((m) => (
+        <div class="milestone">
+          <dt>
+            {m.name}
+            <span class="milestone-timing">{m.timing}</span>
+          </dt>
+          <dd>
+            {m.text}
+            {m.href && (
+              <>
+                {' '}
+                <a href={m.href}>חישוב &rarr;</a>
+              </>
+            )}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+  <p class="milestones-note">המנהגים עשויים להשתנות בין קהילות — מומלץ להתייעץ עם רב.</p>
+</section>
+
+<style>
+  .mourning-milestones {
+    margin: 2.5rem 0;
+  }
+
+  .mourning-milestones h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  dl {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .milestone {
+    border-inline-start: 3px solid var(--gold-accent);
+    padding-inline-start: 0.9rem;
+  }
+
+  dt {
+    font-family: var(--font-prayer);
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .milestone-timing {
+    font-family: var(--font-ui);
+    font-weight: 400;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  dd {
+    margin: 0.15rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+  }
+
+  .milestones-note {
+    margin-top: 1.25rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+</style>
