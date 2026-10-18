@@ -17,6 +17,12 @@ import { isPlaceholder } from '../lib/hazkara/templates.ts';
 
   <form id="hazkara-form">
     <fieldset>
+      <legend>מתי נאמר</legend>
+      <label><input type="radio" name="occasion" value="burial" checked /> הלוויה / הזכרה</label>
+      <label><input type="radio" name="occasion" value="graveVisit" /> ביקור קבר (יארצייט, ימי זיכרון)</label>
+    </fieldset>
+
+    <fieldset>
       <legend>נוסח</legend>
       <label><input type="radio" name="rite" value="ashkenazi" checked /> אשכנזי</label>
       <label><input type="radio" name="rite" value="sephardi" /> ספרדי</label>
@@ -63,15 +69,16 @@ import { isPlaceholder } from '../lib/hazkara/templates.ts';
 
   <script>
     import { renderHazkara } from '../lib/hazkara/interpolate.ts';
-    import { HAZKARA_TEMPLATES } from '../lib/hazkara/templates.ts';
+    import { HAZKARA_TEMPLATES, HAZKARA_GRAVE_VISIT_TEMPLATES } from '../lib/hazkara/templates.ts';
     import { normalizeName } from '../lib/hebrew/normalizeName.ts';
-    import type { Rite, Gender } from '../lib/hazkara/types.ts';
+    import type { Rite, Gender, Occasion } from '../lib/hazkara/types.ts';
 
     const form = document.getElementById('hazkara-form') as HTMLFormElement;
     const result = document.getElementById('hazkara-result') as HTMLElement;
 
     function update() {
       const data = new FormData(form);
+      const occasion = (data.get('occasion') ?? 'burial') as Occasion;
       const rite = (data.get('rite') ?? 'ashkenazi') as Rite;
       const gender = (data.get('gender') ?? 'male') as Gender;
       const deceasedName = normalizeName(
@@ -89,7 +96,8 @@ import { isPlaceholder } from '../lib/hazkara/templates.ts';
         return;
       }
 
-      const template = HAZKARA_TEMPLATES[`${rite}-${gender}`];
+      const templates = occasion === 'graveVisit' ? HAZKARA_GRAVE_VISIT_TEMPLATES : HAZKARA_TEMPLATES;
+      const template = templates[`${rite}-${gender}`];
       const heading = document.createElement('h2');
       heading.textContent = template.title;
       result.appendChild(heading);

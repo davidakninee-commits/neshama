@@ -104,49 +104,138 @@ export const HAZKARA_TEMPLATES: Record<`${HazkaraTemplate['rite']}-${HazkaraTemp
   'ashkenazi-male': {
     rite: 'ashkenazi',
     gender: 'male',
+    occasion: 'burial',
     title: 'אל מלא רחמים (נוסח אשכנז) — לאיש',
     tokens: ASHKENAZI_TOKENS,
   },
   'ashkenazi-female': {
     rite: 'ashkenazi',
     gender: 'female',
+    occasion: 'burial',
     title: 'אל מלא רחמים (נוסח אשכנז) — לאישה',
     tokens: ASHKENAZI_TOKENS,
   },
   'sephardi-male': {
     rite: 'sephardi',
     gender: 'male',
+    occasion: 'burial',
     title: 'השכבה (נוסח ספרד) — לאיש',
     tokens: SEPHARDI_TOKENS,
   },
   'sephardi-female': {
     rite: 'sephardi',
     gender: 'female',
+    occasion: 'burial',
     title: 'השכבה (נוסח ספרד) — לאישה',
     tokens: SEPHARDI_TOKENS,
   },
   'mizrahi-male': {
     rite: 'mizrahi',
     gender: 'male',
+    occasion: 'burial',
     title: 'הזכרה (עדות המזרח) — לאיש',
     tokens: MIZRAHI_TOKENS,
   },
   'mizrahi-female': {
     rite: 'mizrahi',
     gender: 'female',
+    occasion: 'burial',
     title: 'הזכרה (עדות המזרח) — לאישה',
     tokens: MIZRAHI_TOKENS,
   },
   'teiman-male': {
     rite: 'teiman',
     gender: 'male',
+    occasion: 'burial',
     title: 'הזכרה (נוסח תימן) — לאיש',
     tokens: TEIMAN_TOKENS,
   },
   'teiman-female': {
     rite: 'teiman',
     gender: 'female',
+    occasion: 'burial',
     title: 'הזכרה (נוסח תימן) — לאישה',
     tokens: TEIMAN_TOKENS,
+  },
+};
+
+/**
+ * Grave-visit variant (yahrzeit, Elul, any visit after the funeral) - as
+ * opposed to the burial-day texts above, recited at the Hashkava service
+ * itself. The core liturgical wording for Al Maleh Rachamim/Hashkava/Hazkara
+ * barely differs by occasion in practice (the same formula is reused at
+ * Yizkor and grave visits in most communities), so rather than inventing a
+ * second full text per rite with no confident source for how it should
+ * differ, this module prepends one short, occasion-specific opening line
+ * (declaring that the visitor is standing at the grave right now) to each
+ * rite's already-reviewed-as-draft core text. This is a deliberately modest
+ * difference, not a claim that fuller distinct grave-visit nuschaot exist
+ * for all four traditions.
+ */
+const GRAVE_VISIT_PREFIX: HazkaraToken[] = [
+  { type: 'literal', text: 'בְּעָמְדִי הַיּוֹם עַל מְקוֹם ' },
+  { type: 'genderWord', male: 'מְנוּחָתוֹ', female: 'מְנוּחָתָהּ' },
+  { type: 'literal', text: ', אֶשָּׂא תְּפִלָּתִי: ' },
+];
+
+export const HAZKARA_GRAVE_VISIT_TEMPLATES: Record<
+  `${HazkaraTemplate['rite']}-${HazkaraTemplate['gender']}`,
+  HazkaraTemplate
+> = {
+  'ashkenazi-male': {
+    rite: 'ashkenazi',
+    gender: 'male',
+    occasion: 'graveVisit',
+    title: 'אל מלא רחמים (ביקור קבר, נוסח אשכנז) — לאיש',
+    tokens: [...GRAVE_VISIT_PREFIX, ...ASHKENAZI_TOKENS],
+  },
+  'ashkenazi-female': {
+    rite: 'ashkenazi',
+    gender: 'female',
+    occasion: 'graveVisit',
+    title: 'אל מלא רחמים (ביקור קבר, נוסח אשכנז) — לאישה',
+    tokens: [...GRAVE_VISIT_PREFIX, ...ASHKENAZI_TOKENS],
+  },
+  'sephardi-male': {
+    rite: 'sephardi',
+    gender: 'male',
+    occasion: 'graveVisit',
+    title: 'השכבה (ביקור קבר, נוסח ספרד) — לאיש',
+    tokens: [...GRAVE_VISIT_PREFIX, ...SEPHARDI_TOKENS],
+  },
+  'sephardi-female': {
+    rite: 'sephardi',
+    gender: 'female',
+    occasion: 'graveVisit',
+    title: 'השכבה (ביקור קבר, נוסח ספרד) — לאישה',
+    tokens: [...GRAVE_VISIT_PREFIX, ...SEPHARDI_TOKENS],
+  },
+  'mizrahi-male': {
+    rite: 'mizrahi',
+    gender: 'male',
+    occasion: 'graveVisit',
+    title: 'הזכרה (ביקור קבר, עדות המזרח) — לאיש',
+    tokens: [...GRAVE_VISIT_PREFIX, ...MIZRAHI_TOKENS],
+  },
+  'mizrahi-female': {
+    rite: 'mizrahi',
+    gender: 'female',
+    occasion: 'graveVisit',
+    title: 'הזכרה (ביקור קבר, עדות המזרח) — לאישה',
+    tokens: [...GRAVE_VISIT_PREFIX, ...MIZRAHI_TOKENS],
+  },
+  'teiman-male': {
+    rite: 'teiman',
+    gender: 'male',
+    occasion: 'graveVisit',
+    title: 'הזכרה (ביקור קבר, נוסח תימן) — לאיש',
+    tokens: [...GRAVE_VISIT_PREFIX, ...TEIMAN_TOKENS],
+  },
+  'teiman-female': {
+    rite: 'teiman',
+    gender: 'female',
+    occasion: 'graveVisit',
+    title: 'הזכרה (ביקור קבר, נוסח תימן) — לאישה',
+    tokens: [...GRAVE_VISIT_PREFIX, ...TEIMAN_TOKENS],
   },
 };

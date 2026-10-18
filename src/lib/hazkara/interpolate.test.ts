@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { renderHazkara } from './interpolate.ts';
-import { HAZKARA_TEMPLATES } from './templates.ts';
+import { HAZKARA_TEMPLATES, HAZKARA_GRAVE_VISIT_TEMPLATES } from './templates.ts';
 
 test('all 8 variants (4 rites x 2 genders) render non-empty text containing the deceased name', () => {
   const keys = Object.keys(HAZKARA_TEMPLATES) as Array<keyof typeof HAZKARA_TEMPLATES>;
@@ -87,4 +87,33 @@ test('mizrahi and teiman: female inflections apply correctly and both close with
 test('isPlaceholder flag is exported and true (drives the UI disclaimer)', async () => {
   const { isPlaceholder } = await import('./templates.ts');
   assert.equal(isPlaceholder, true);
+});
+
+test('grave-visit templates: all 8 variants render non-empty text containing the deceased name and the grave-visit opening', () => {
+  const keys = Object.keys(HAZKARA_GRAVE_VISIT_TEMPLATES) as Array<keyof typeof HAZKARA_GRAVE_VISIT_TEMPLATES>;
+  assert.equal(keys.length, 8);
+  for (const key of keys) {
+    const text = renderHazkara(HAZKARA_GRAVE_VISIT_TEMPLATES[key], { deceasedName: 'דוד' });
+    assert.ok(text.includes('דוד'), `${key} missing the deceased's name`);
+    assert.ok(text.startsWith('בְּעָמְדִי הַיּוֹם עַל מְקוֹם'), `${key} missing the grave-visit opening`);
+  }
+});
+
+test('grave-visit opening inflects by gender and is followed by the same burial-day core text', () => {
+  const graveMale = renderHazkara(HAZKARA_GRAVE_VISIT_TEMPLATES['ashkenazi-male'], { deceasedName: 'דוד' });
+  const graveFemale = renderHazkara(HAZKARA_GRAVE_VISIT_TEMPLATES['ashkenazi-female'], { deceasedName: 'רחל' });
+  assert.ok(graveMale.includes('מְקוֹם מְנוּחָתוֹ,'));
+  assert.ok(graveFemale.includes('מְקוֹם מְנוּחָתָהּ,'));
+
+  const burialMale = renderHazkara(HAZKARA_TEMPLATES['ashkenazi-male'], { deceasedName: 'דוד' });
+  assert.ok(graveMale.endsWith(burialMale), 'grave-visit text should end with the exact burial-day text');
+});
+
+test('grave-visit templates carry occasion "graveVisit", burial templates carry "burial"', () => {
+  for (const template of Object.values(HAZKARA_GRAVE_VISIT_TEMPLATES)) {
+    assert.equal(template.occasion, 'graveVisit');
+  }
+  for (const template of Object.values(HAZKARA_TEMPLATES)) {
+    assert.equal(template.occasion, 'burial');
+  }
 });

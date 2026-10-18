@@ -1,5 +1,9 @@
 export type Rite = 'sephardi' | 'ashkenazi' | 'mizrahi' | 'teiman';
 export type Gender = 'male' | 'female';
+/** 'burial' = recited at the funeral/Hashkava service; 'graveVisit' = recited
+ *  when visiting the grave afterward (yahrzeit, Elul, etc.) - see templates.ts
+ *  for how the two differ. */
+export type Occasion = 'burial' | 'graveVisit';
 
 export interface HazkaraSlots {
   /** already normalized/display form of the deceased's name */
@@ -27,6 +31,7 @@ export type HazkaraToken =
 export interface HazkaraTemplate {
   rite: Rite;
   gender: Gender;
+  occasion: Occasion;
   /** display heading, e.g. "אל מלא רחמים (נוסח אשכנז) — לאיש" */
   title: string;
   tokens: HazkaraToken[];
