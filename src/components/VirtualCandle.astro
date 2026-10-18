@@ -1,0 +1,161 @@
+---
+interface Props {
+  /** text announced to screen readers once lit, e.g. "הנר דולק לעילוי נשמת דוד" */
+  litLabel?: string;
+}
+
+const { litLabel = 'הנר דולק' } = Astro.props;
+---
+
+<div class="virtual-candle" data-lit-label={litLabel}>
+  <button type="button" id="light-candle-button" class="candle-button">
+    <span class="candle-visual" aria-hidden="true">
+      <span class="candle-glow"></span>
+      <svg class="candle-flame" viewBox="0 0 512 512" width="26" height="26">
+        <path
+          d="M256,120 C 300,170 326,215 318,260 C 312,300 288,330 256,330 C 224,330 200,300 194,260 C 186,215 212,170 256,120 Z"
+          fill="#C5A059"
+        />
+        <path
+          d="M256,195 C 278,222 290,247 285,270 C 281,290 270,305 256,305 C 242,305 231,290 227,270 C 222,247 234,222 256,195 Z"
+          fill="#F9F8F5"
+        />
+      </svg>
+      <svg class="candle-body" viewBox="0 0 40 90" width="20" height="45">
+        <rect x="6" y="10" width="28" height="80" rx="3" fill="#F3EEE2" stroke="#D9CFB6" stroke-width="1" />
+        <rect x="18" y="0" width="4" height="12" fill="#8A8273" />
+      </svg>
+    </span>
+    <span class="candle-text">הדליקו נר לעילוי נשמה</span>
+  </button>
+  <p class="candle-status" id="candle-status" role="status" aria-live="polite"></p>
+</div>
+
+<script>
+  const button = document.getElementById('light-candle-button') as HTMLButtonElement;
+  const status = document.getElementById('candle-status') as HTMLElement;
+  const litLabel = button.closest('.virtual-candle')?.getAttribute('data-lit-label');
+
+  button.addEventListener('click', () => {
+    if (button.classList.contains('is-lit')) return;
+    button.classList.add('is-lit');
+    button.querySelector('.candle-text')!.textContent = 'הנר דולק';
+    status.textContent = litLabel || 'הנר דולק';
+  });
+</script>
+
+<style>
+  .virtual-candle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+  }
+
+  .candle-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-family: var(--font-ui);
+  }
+
+  .candle-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    height: 70px;
+  }
+
+  .candle-flame {
+    position: absolute;
+    top: -18px;
+    opacity: 0;
+    transform: scaleY(0.6);
+    transform-origin: 50% 100%;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .candle-glow {
+    position: absolute;
+    top: -26px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.4) 0%, rgba(197, 160, 89, 0) 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .is-lit .candle-flame {
+    opacity: 1;
+    transform: scaleY(1);
+    animation: candle-flicker 3.2s ease-in-out infinite;
+  }
+
+  .is-lit .candle-glow {
+    opacity: 1;
+    animation: glow-pulse 3.2s ease-in-out infinite;
+  }
+
+  .candle-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .is-lit .candle-text {
+    color: var(--gold-hover);
+  }
+
+  .candle-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @keyframes candle-flicker {
+    0%,
+    100% {
+      transform: scaleY(1) scaleX(1) rotate(0deg);
+    }
+    20% {
+      transform: scaleY(1.04) scaleX(0.98) rotate(-1deg);
+    }
+    40% {
+      transform: scaleY(0.97) scaleX(1.02) rotate(1deg);
+    }
+    60% {
+      transform: scaleY(1.03) scaleX(0.99) rotate(-0.5deg);
+    }
+    80% {
+      transform: scaleY(0.99) scaleX(1.01) rotate(0.5deg);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .candle-flame,
+    .candle-glow,
+    .is-lit .candle-flame,
+    .is-lit .candle-glow {
+      animation: none;
+    }
+  }
+</style>

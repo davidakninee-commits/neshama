@@ -1,5 +1,6 @@
 ---
 import PrintableLayout from '../layouts/PrintableLayout.astro';
+import VirtualCandle from '../components/VirtualCandle.astro';
 import { loadTehillimChapter } from '../lib/content/loadTehillim.ts';
 
 const { verses } = loadTehillimChapter(119);
@@ -34,6 +35,8 @@ const { verses } = loadTehillimChapter(119);
   </form>
 
   <div id="results" aria-live="polite"></div>
+
+  <VirtualCandle />
 
   {/* Our own bundled Public Domain Tanakh text, not user input — but the
       </script> escape is cheap defensive practice for any inline JSON. */}
