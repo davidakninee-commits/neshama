@@ -1,0 +1,102 @@
+---
+import PrintableLayout from '../layouts/PrintableLayout.astro';
+import { isPlaceholder } from '../lib/kaddish/templates.ts';
+---
+
+<PrintableLayout title="קדיש יתום">
+  <p><a href="/">&larr; חזרה לדף הבית</a></p>
+
+  <p class="disclaimer" role="note">
+    ⚠️ קדיש יתום נאמר <strong>רק במניין</strong> (עשרה גברים ומעלה) — אין לאומרו
+    לבד. דף זה מיועד לעיון ולהכנה, לא כתחליף לאמירה במניין.
+  </p>
+
+  {
+    isPlaceholder && (
+      <p class="disclaimer" role="note">
+        ⚠️ הנוסח המוצג כאן הוא <strong>טיוטה ראשונית בלבד</strong> וטרם אושר הלכתית —
+        יש לבדוק מול סידור מודפס או רב לפני שימוש בפועל.
+      </p>
+    )
+  }
+
+  <fieldset>
+    <legend>נוסח</legend>
+    <label><input type="radio" name="rite" value="ashkenazi" checked /> אשכנזי</label>
+    <label><input type="radio" name="rite" value="sephardi" /> ספרדי</label>
+    <label><input type="radio" name="rite" value="mizrahi" /> עדות המזרח</label>
+    <label><input type="radio" name="rite" value="teiman" /> תימן</label>
+  </fieldset>
+
+  <section id="kaddish-result"></section>
+
+  <script>
+    import { KADDISH_TEMPLATES } from '../lib/kaddish/templates.ts';
+    import type { Rite } from '../lib/kaddish/types.ts';
+
+    const form = document.querySelector('fieldset') as HTMLElement;
+    const result = document.getElementById('kaddish-result') as HTMLElement;
+
+    function update() {
+      const checked = form.querySelector('input[name=rite]:checked') as HTMLInputElement;
+      const rite = (checked?.value ?? 'ashkenazi') as Rite;
+      const template = KADDISH_TEMPLATES[rite];
+
+      result.replaceChildren();
+
+      const heading = document.createElement('h2');
+      heading.textContent = template.title;
+      result.appendChild(heading);
+
+      for (const line of template.lines) {
+        const p = document.createElement('p');
+        p.className = line.isResponse ? 'prayer-text kaddish-response' : 'prayer-text';
+        p.textContent = line.text;
+        result.appendChild(p);
+      }
+    }
+
+    form.addEventListener('change', update);
+    update();
+  </script>
+</PrintableLayout>
+
+<style>
+  fieldset {
+    border: 1px solid var(--border-light);
+    border-radius: 0.375rem;
+    padding: 0.6rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  legend {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 0 0.4rem;
+  }
+
+  fieldset label {
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  #kaddish-result h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  #kaddish-result .prayer-text {
+    margin: 0 0 0.9rem;
+  }
+
+  .kaddish-response {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+</style>
