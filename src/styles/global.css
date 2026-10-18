@@ -144,17 +144,20 @@ button {
 
 .banner-controls {
   position: absolute;
-  top: 18px;
-  inset-inline-start: 20px;
+  top: 12px;
+  inset-inline-start: 12px;
   display: flex;
-  gap: 0.4rem;
+  gap: 0.25rem;
 }
 
+/* 44px מינימום להקשה - עקרון יסוד בנגישות מגע (WCAG 2.5.5 / Apple HIG),
+   חשוב במיוחד כאן: קהל היעד מגיע לעיתים קרובות דרך טלפון לא מוכר, בלחץ
+   רגשי, ולעיתים מבוגר יותר - לא המקום לכפתורים זעירים. */
 .banner-controls button {
   font-family: var(--font-ui);
   font-size: 0.85rem;
-  width: 2rem;
-  height: 2rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: transparent;
