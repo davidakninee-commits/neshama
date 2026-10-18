@@ -71,21 +71,21 @@ import { isPlaceholder } from '../lib/hazkara/templates.ts';
     import { renderHazkara } from '../lib/hazkara/interpolate.ts';
     import { HAZKARA_TEMPLATES, HAZKARA_GRAVE_VISIT_TEMPLATES } from '../lib/hazkara/templates.ts';
     import { normalizeName } from '../lib/hebrew/normalizeName.ts';
+    import { crossFadeUpdate } from '../lib/ui/crossFadeUpdate.ts';
     import type { Rite, Gender, Occasion } from '../lib/hazkara/types.ts';
 
     const form = document.getElementById('hazkara-form') as HTMLFormElement;
     const result = document.getElementById('hazkara-result') as HTMLElement;
+    const nameInput = document.getElementById('deceased-name-input') as HTMLInputElement;
+    const parentInput = document.getElementById('parent-name-input') as HTMLInputElement;
 
-    function update() {
+    function render() {
       const data = new FormData(form);
       const occasion = (data.get('occasion') ?? 'burial') as Occasion;
       const rite = (data.get('rite') ?? 'ashkenazi') as Rite;
       const gender = (data.get('gender') ?? 'male') as Gender;
-      const deceasedName = normalizeName(
-        (document.getElementById('deceased-name-input') as HTMLInputElement).value
-      ).display;
-      const parentNameRaw = (document.getElementById('parent-name-input') as HTMLInputElement).value;
-      const parentName = normalizeName(parentNameRaw).display || undefined;
+      const deceasedName = normalizeName(nameInput.value).display;
+      const parentName = normalizeName(parentInput.value).display || undefined;
 
       result.replaceChildren();
       if (!deceasedName) {
@@ -109,8 +109,15 @@ import { isPlaceholder } from '../lib/hazkara/templates.ts';
       result.appendChild(p);
     }
 
-    form.addEventListener('input', update);
-    update();
+    // הקלדה בשם מתעדכנת מיידית (לא קופצת תוך כדי הקלדה); מעבר בין
+    // נוסח/מגדר/מועד - שינוי בדיד ונדיר - מקבל קרוס-פייד עדין.
+    nameInput.addEventListener('input', render);
+    parentInput.addEventListener('input', render);
+    for (const radio of form.querySelectorAll('input[type="radio"]')) {
+      radio.addEventListener('change', () => crossFadeUpdate(result, render));
+    }
+
+    render();
   </script>
 </PrintableLayout>
 
@@ -172,8 +179,22 @@ import { isPlaceholder } from '../lib/hazkara/templates.ts';
     max-width: 20rem;
   }
 
+  #hazkara-result {
+    transition: opacity 150ms ease;
+  }
+
+  #hazkara-result.is-updating {
+    opacity: 0;
+  }
+
   #hazkara-result h2 {
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #hazkara-result {
+      transition: none;
+    }
   }
 </style>

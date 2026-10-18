@@ -78,6 +78,8 @@ button {
   color: var(--text-primary);
   text-align: right;
   direction: rtl;
+  /* לחיצה על א-/א+ משנה גודל בהדרגה במקום בקפיצה */
+  transition: font-size 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* תג אות השם / נשמה - בצורת חותם/מדליה מפורזת */
@@ -157,10 +159,22 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: transparent;
   color: #ffffff;
+  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1), background-color 150ms ease;
 }
 
 .banner-controls button:hover {
   background: rgba(255, 255, 255, 0.15);
+}
+
+.banner-controls button:active {
+  transform: scale(0.9);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner-controls button {
+    transition: none;
+  }
 }
 
 /* תוצאה אחת (תהילים/משנה לפי אות) בתוך דף תוצאות */
@@ -222,11 +236,24 @@ button {
   border-radius: 0.375rem;
   background: var(--primary-accent);
   color: white;
+  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1), background-color 150ms ease, border-color 150ms ease;
 }
 
 .name-form button:hover {
   background: var(--gold-hover);
   border-color: var(--gold-hover);
+}
+
+/* משוב מיידי בלחיצה (עיקרון ה-Response) - מתחיל ברגע הלחיצה, לא מחכה לשחרור */
+.name-form button:active {
+  transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prayer-text,
+  .name-form button {
+    transition: none;
+  }
 }
 
 /* רשימות ממוספרות של פסוקים/משניות. ה-gutter חייב להכיל בנוחות את

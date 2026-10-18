@@ -33,15 +33,12 @@ import { isPlaceholder } from '../lib/kaddish/templates.ts';
   <script>
     import { KADDISH_TEMPLATES } from '../lib/kaddish/templates.ts';
     import type { Rite } from '../lib/kaddish/types.ts';
+    import { crossFadeUpdate } from '../lib/ui/crossFadeUpdate.ts';
 
     const form = document.querySelector('fieldset') as HTMLElement;
     const result = document.getElementById('kaddish-result') as HTMLElement;
 
-    function update() {
-      const checked = form.querySelector('input[name=rite]:checked') as HTMLInputElement;
-      const rite = (checked?.value ?? 'ashkenazi') as Rite;
-      const template = KADDISH_TEMPLATES[rite];
-
+    function render(template: (typeof KADDISH_TEMPLATES)[Rite]) {
       result.replaceChildren();
 
       const heading = document.createElement('h2');
@@ -54,6 +51,12 @@ import { isPlaceholder } from '../lib/kaddish/templates.ts';
         p.textContent = line.text;
         result.appendChild(p);
       }
+    }
+
+    function update() {
+      const checked = form.querySelector('input[name=rite]:checked') as HTMLInputElement;
+      const rite = (checked?.value ?? 'ashkenazi') as Rite;
+      crossFadeUpdate(result, () => render(KADDISH_TEMPLATES[rite]));
     }
 
     form.addEventListener('change', update);
@@ -86,6 +89,14 @@ import { isPlaceholder } from '../lib/kaddish/templates.ts';
     gap: 0.35rem;
   }
 
+  #kaddish-result {
+    transition: opacity 150ms ease;
+  }
+
+  #kaddish-result.is-updating {
+    opacity: 0;
+  }
+
   #kaddish-result h2 {
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
@@ -98,5 +109,11 @@ import { isPlaceholder } from '../lib/kaddish/templates.ts';
   .kaddish-response {
     color: var(--text-muted);
     font-style: italic;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #kaddish-result {
+      transition: none;
+    }
   }
 </style>
