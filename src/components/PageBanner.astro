@@ -1,4 +1,6 @@
 ---
+import { DEDICATION } from '../consts.ts';
+
 interface Props {
   title: string;
   isHome?: boolean;
@@ -12,7 +14,38 @@ const { title, isHome = false } = Astro.props;
     <button type="button" id="text-scale-down" aria-label="הקטן טקסט">א-</button>
     <button type="button" id="text-scale-up" aria-label="הגדל טקסט">א+</button>
   </div>
+
+  {
+    isHome && (
+      <div class="hero-flame" aria-hidden="true">
+        <div class="hero-flame-glow" />
+        <svg viewBox="0 0 512 512" width="72" height="72">
+          <path
+            d="M256,120 C 300,170 326,215 318,260 C 312,300 288,330 256,330 C 224,330 200,300 194,260 C 186,215 212,170 256,120 Z"
+            fill="#C5A059"
+          />
+          <path
+            d="M256,195 C 278,222 290,247 285,270 C 281,290 270,305 256,305 C 242,305 231,290 227,270 C 222,247 234,222 256,195 Z"
+            fill="#F9F8F5"
+          />
+        </svg>
+      </div>
+    )
+  }
+
   <h1>{title}</h1>
+
+  {
+    isHome && (
+      <>
+        <p class="epigraph">
+          נֵר ה׳ נִשְׁמַת אָדָם
+          <span class="epigraph-ref">משלי כ, כז</span>
+        </p>
+        <p class="dedication">{DEDICATION}</p>
+      </>
+    )
+  }
 </div>
 
 <script>
@@ -22,3 +55,86 @@ const { title, isHome = false } = Astro.props;
   document.getElementById('text-scale-down')?.addEventListener('click', decreaseTextScale);
   document.getElementById('text-scale-up')?.addEventListener('click', increaseTextScale);
 </script>
+
+<style>
+  .hero-flame {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 12px;
+  }
+
+  .hero-flame svg {
+    animation: flicker 3.2s ease-in-out infinite;
+    transform-origin: 50% 85%;
+    position: relative;
+  }
+
+  .hero-flame-glow {
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.35) 0%, rgba(197, 160, 89, 0) 70%);
+    animation: glow-pulse 3.2s ease-in-out infinite;
+  }
+
+  @keyframes flicker {
+    0%,
+    100% {
+      transform: scaleY(1) scaleX(1) rotate(0deg);
+    }
+    20% {
+      transform: scaleY(1.04) scaleX(0.98) rotate(-1deg);
+    }
+    40% {
+      transform: scaleY(0.97) scaleX(1.02) rotate(1deg);
+    }
+    60% {
+      transform: scaleY(1.03) scaleX(0.99) rotate(-0.5deg);
+    }
+    80% {
+      transform: scaleY(0.99) scaleX(1.01) rotate(0.5deg);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-flame svg,
+    .hero-flame-glow {
+      animation: none;
+    }
+  }
+
+  .epigraph {
+    font-family: var(--font-prayer);
+    font-size: 1.1rem;
+    color: #e8dcc5;
+    margin: 14px auto 0;
+    max-width: 26rem;
+    line-height: 1.8;
+  }
+
+  .epigraph-ref {
+    display: block;
+    font-size: 0.75rem;
+    color: #c5a059;
+    margin-top: 4px;
+    font-family: var(--font-ui);
+  }
+
+  .dedication {
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: #9db0c4;
+    font-family: var(--font-ui);
+  }
+</style>
